@@ -2,6 +2,8 @@
 
 **Proyecto final de grado (TFG)**: Sistema web para la gestión de un gimnasio, desarrollado con **PHP (CodeIgniter 4)**.
 
+Realizado por Narcis Claudiu Aducovschi , Matias Bolagay Quevedo y Danny Sánchez
+
 ---
 
 ## 📌 Descripción
