@@ -6,14 +6,9 @@
         padding: 0 20px;
         height: 80px;
         box-sizing: border-box;
-        background: linear-gradient(
-            to bottom,
-            #000 0%,
-            #000 70%,
-            #666 100%
-        );
+        background: #000;
     ">
-    <div style="display: flex; align-items: center;">
+    <div style="display: flex; align-items: center; justify-content:space-between">
         <img
             src="<?= base_url('assets/img/logo.png') ?>"
             alt="Logo de gimnasio DMN Fitness"
@@ -22,6 +17,7 @@
                 width: auto;
                 object-fit: contain;
                 display: block;
+                padding-top: 10px
             ">
     </div>
 
