@@ -54,9 +54,27 @@
 </section>
 
 <!-- Info -->
-<section style="height: 100vh; background-color: red;">
+<section style="height: 100vh;">
+  <div style="display: flex; height: 100%;">
+    
+    <div style="
+      width: 80%;
+      background-color: red;
+      clip-path: polygon(100% 0%, 87% 100%, 0% 100%, 0% 0%);
+    "></div>
 
+    <div style="
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    ">
+      <img src="" alt="">
+    </div>
+
+  </div>
 </section>
+
 
 
 <!-- FOOTER: DEBUG INFO + COPYRIGHTS -->
