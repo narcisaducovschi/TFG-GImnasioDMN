@@ -64,7 +64,7 @@
             text-decoration: none;
             background-color: #fbd32d;
             color: #000;
-            padding: 20px 40px;            
+            padding: 20px 40px;
             font-size: 35px;
             font-weight: 800;
             border-radius: 10px;
@@ -127,7 +127,7 @@
         .info-left p {
             font-size: 35px;
             color: #000;
-            margin-top: -70%;
+            transform: translateY(-350px);
             font-weight: 900;
             font-style: italic;
             text-align: left;
@@ -197,6 +197,109 @@
             color: #fff;
             transition: 0.3s;
         }
+
+        .why-us-section {
+            background-color: #2f2f2f;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .why-us-section h2 {
+            color: #fff;
+            font-weight: 800;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            font-size: 60px;
+            margin: 0;
+        }
+
+        .why-us-section p {
+            color: #fff;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            font-size: 30px;
+        }
+
+        .why-us-container {
+            background-color: #151414;
+            width: 1100px;
+            height: 1025px;
+            border-radius: 75px;
+            box-shadow: 0px 0px 21px 10px rgba(213, 217, 255, 0.5);
+        }
+
+        .why-us-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .box {
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box h3 {
+            font-size: 21px;
+            font-weight: bold;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+        }
+
+        .box p {
+            margin-top: -10px;
+            width: 200px;
+            text-wrap: wrap;
+            font-size: 17px;
+            font-weight: 300;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0px 0px 15px rgba(233, 196, 103, 0.7));
+        }
+
+        .separator-h{
+            background-color: rgba(150, 147, 162, 0.2);
+            width: 932px;
+            height: 5px;
+            margin-left: 5%;
+        }
+
+        .why-us-pricing{
+            display: flex;
+            gap: 20%;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .pricing-basic{
+            background-color: #fff;
+            border-radius: 42px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .pricing-basic p{
+            color: #000;
+            width: 250px;
+            text-wrap: wrap;
+            font-size: 18px;
+        }
+
+        .pricing-basic img{
+            width: 400px;
+            height: 269px;
+        }
     </style>
 </head>
 
@@ -242,6 +345,59 @@
 
         <div class="store-button">
             <a href="/tienda">VER TODOS LOS PRODUCTOS</a>
+        </div>
+    </section>
+    <!-- ¿Por qué nosotros section ? -->
+    <section class="why-us-section">
+        <h2>¿Por qué nosotros?</h2>
+        <p>Todo lo que necesitas para entrenar sin excusas</p>
+        <div class="why-us-container">
+            <div class="why-us-info">
+                <div class="box">
+                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" />
+                        <path d="M16 3v4" />
+                        <path d="M8 3v4" />
+                        <path d="M4 11h16" />
+                        <path d="M7 14h.013" />
+                        <path d="M10.01 14h.005" />
+                        <path d="M13.01 14h.005" />
+                        <path d="M16.015 14h.005" />
+                        <path d="M13.015 17h.005" />
+                        <path d="M7.01 17h.005" />
+                        <path d="M10.01 17h.005" />
+                    </svg>
+                    <h3>Abiertos todo el año</h3>
+                    <p>Estamos abiertos los 365 días del año, desde las 6 am hasta las 10pm </p>
+                </div>
+                <div class="box">
+                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                    <h3>Rutinas personalizadas</h3>
+                    <p>Añade y modifica tus rutinas a tu gusto</p>
+                </div>  
+                <div class="box">
+                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chalkboard-teacher"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1" /><path d="M12 14a2 2 0 1 0 4.001 -.001a2 2 0 0 0 -4.001 .001" /><path d="M17 19a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" /></svg>
+                    <h3>Los mejores profesionales</h3>
+                    <p>Un equipo experto que te acompaña en cada paso de tu transformación</p>
+                </div>
+            </div>
+            <div class="separator-h"></div>
+            <div class="why-us-pricing">
+                <div class="pricing-basic">
+                    <div class="basic-image">
+                        <img src="<?= base_url('assets/img/auth/pricing-basic.jpg') ?>" >
+                    </div>
+                    <h3>PLAN BASICO</h3>
+                    <p>·Acceso completo sala de entrenamientos de musculación libre y máquinas</p>
+                </div>
+                <div class="pricing-premium">
+                    <div class="premium-image">
+                        <img src="<?= base_url('assets/img/auth/pricing-premium.jpg') ?>">                        
+                    </div>
+                    <h3>PLAN PREMIUN</h3>
+                </div>
+            </div>
         </div>
     </section>
 
