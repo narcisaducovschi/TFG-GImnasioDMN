@@ -200,7 +200,7 @@
 
         .why-us-section {
             background-color: #2f2f2f;
-            height: 100vh;
+            height: calc(100vh + 250px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -266,21 +266,22 @@
             filter: drop-shadow(0px 0px 15px rgba(233, 196, 103, 0.7));
         }
 
-        .separator-h{
+        .separator-h {
             background-color: rgba(150, 147, 162, 0.2);
             width: 932px;
             height: 5px;
             margin-left: 5%;
         }
 
-        .why-us-pricing{
+        .why-us-pricing {
             display: flex;
             gap: 20%;
             flex-direction: row;
             justify-content: center;
             align-items: center;
         }
-        .pricing-basic{
+
+        .pricing-basic {
             margin-top: 20px;
             background-color: #fff;
             border-radius: 42px;
@@ -290,11 +291,13 @@
             justify-content: center;
             align-items: center;
         }
-        .pricing-basic h3{
+
+        .pricing-basic h3 {
             font-weight: 800;
             font-size: 30px;
         }
-        .pricing-basic p{
+
+        .pricing-basic p {
             color: #000;
             width: 250px;
             text-wrap: wrap;
@@ -302,9 +305,11 @@
             font-weight: bold;
         }
 
-        .pricing-basic img{
-            width: 400px;
-            height: 269px;
+        .pricing-basic img {
+            width: 100%;
+            height: auto;
+            border-radius: 42px 42px 0 0;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -378,12 +383,23 @@
                     <p>Estamos abiertos los 365 días del año, desde las 6 am hasta las 10pm </p>
                 </div>
                 <div class="box">
-                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                        <path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" />
+                        <path d="M9 12h6" />
+                        <path d="M9 16h6" />
+                    </svg>
                     <h3>Rutinas personalizadas</h3>
                     <p>Añade y modifica tus rutinas a tu gusto</p>
-                </div>  
+                </div>
                 <div class="box">
-                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chalkboard-teacher"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1" /><path d="M12 14a2 2 0 1 0 4.001 -.001a2 2 0 0 0 -4.001 .001" /><path d="M17 19a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" /></svg>
+                    <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chalkboard-teacher">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M8 19h-3a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v11a1 1 0 0 1 -1 1" />
+                        <path d="M12 14a2 2 0 1 0 4.001 -.001a2 2 0 0 0 -4.001 .001" />
+                        <path d="M17 19a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" />
+                    </svg>
                     <h3>Los mejores profesionales</h3>
                     <p>Un equipo experto que te acompaña en cada paso de tu transformación</p>
                 </div>
@@ -392,7 +408,7 @@
             <div class="why-us-pricing">
                 <div class="pricing-basic">
                     <div class="basic-image">
-                        <img src="<?= base_url('assets/img/pricing-basic.jpg') ?>" >
+                        <img src="<?= base_url('assets/img/pricing-basic.jpg') ?>">
                     </div>
                     <h3>PLAN BASICO</h3>
                     <p>·Acceso completo sala de entrenamientos de musculación libre y máquinas</p>
