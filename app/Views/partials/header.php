@@ -17,7 +17,7 @@
                 width: auto;
                 object-fit: contain;
                 display: block;
-                padding-top: 10px
+                padding-top: 20px
             ">
     </div>
 
