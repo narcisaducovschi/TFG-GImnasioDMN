@@ -198,6 +198,7 @@
             transition: 0.3s;
         }
 
+        /* ¿Por qué nosotros? Section */
         .why-us-section {
             background-color: #2f2f2f;
             height: calc(100vh + 250px);
@@ -268,7 +269,7 @@
 
         .separator-h {
             background-color: rgba(150, 147, 162, 0.2);
-            width: 932px;
+            width: 90%;
             height: 5px;
             margin-left: 5%;
         }
@@ -310,6 +311,176 @@
             height: auto;
             border-radius: 42px 42px 0 0;
             object-fit: cover;
+        }
+
+        .pricing-premium {
+            margin-top: 20px;
+            background-color: #212125;
+            border-radius: 42px;
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 21px 0px rgba(226, 197, 8);
+        }
+
+        .pricing-premium p {
+            margin-top: -10px;
+            color: #fff;
+            width: 250px;
+            text-wrap: wrap;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+        .pricing-premium img {
+            width: 100%;
+            height: auto;
+            border-radius: 42px 42px 0 0;
+            object-fit: cover;
+        }
+
+        .pricing-premium h3 {
+            font-weight: 800;
+            font-size: 30px;
+            color: #e2c508;
+        }
+
+        /* FAQs Section */
+        .faqs-section {
+            background-color: #2f2f2f;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .faqs-section h1 {
+            color: #fff;
+            font-size: 50px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
+
+        .faqs {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .faqs-container {
+            background-color: #151414;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .faqs-question {
+            padding: 20px 30px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+
+        .faqs-question::after {
+            content: '+';
+            position: absolute;
+            right: 30px;
+            font-size: 25px;
+            transition: transform 0.3s;
+        }
+
+        .faqs-container.active .faqs-question::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        .faqs-content {
+            max-height: 0;
+            overflow: hidden;
+            background-color: #333;
+            color: #fff;
+            padding: 0 30px;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+
+        .faqs-container.active .faqs-content {
+            max-height: 500px;
+            padding: 20px 30px;
+        }
+
+        .faqs-content p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .tickets {
+            margin-top: 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            color: #fff;
+            width: 59%;
+            background-color: #151414;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+        }
+
+        .tickets-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .tickets-left h1 {
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+
+        .tickets-left p {
+            margin: 0;
+            font-size: 16px;
+            width: 500px;
+            text-align: left;
+        }
+
+        .tickets-left a {
+            text-decoration: none;
+            background-color: #fff;
+            color: #000;
+            width: 200px;
+            padding: 5px;
+            border-radius: 300px;
+            margin-top: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tickets-left a:hover {
+            cursor: pointer;
+            background-color: #fed107;
+            color: #000;
+        }
+
+
+        .tickets-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tickets-icon svg {
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -413,16 +584,84 @@
                     <h3>PLAN BASICO</h3>
                     <p>·Acceso completo sala de entrenamientos de musculación libre y máquinas</p>
                 </div>
+
                 <div class="pricing-premium">
                     <div class="premium-image">
-                        <!-- <img src="<?= base_url('assets/img/pricing-premium.jpg') ?>">                         -->
+                        <img src="<?= base_url('assets/img/pricing-premium.jpg') ?>">
                     </div>
-                    <h3>PLAN PREMIUN</h3>
+                    <h3>PLAN PREMIUM</h3>
+                    <p>·Entrenamientos guiados con entrenadores personales, fuentes de agua con vitaminas y acceso a todas las clases </p>
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQs Section -->
+    <section class="faqs-section">
+        <h1>Preguntas Frecuentes</h1>
+        <div class="faqs">
+            <div class="faqs-container">
+                <div class="faqs-question">¿Necesito experiencia previa parar entrenar?</div>
+                <div class="faqs-content">
+                    <p>No, no necesitas experiencia previa. Nuestros entrenadores y rutinas están diseñados para principiantes y avanzados, adaptándose a tu nivel de condición física.</p>
+                </div>
+            </div>
+            <div class="faqs-container">
+                <div class="faqs-question">¿Cuanto tiempo duran las clases guiadas?</div>
+                <div class="faqs-content">
+                    <p>La duración de las clases guiadas varía según la disciplina: generalmente entre 45 y 60 minutos por sesión. La hora de inicio y de finalización de la clase está indicada a la hora de hacer la reserva, pero esta puede variar en función de factores externos. </p>
+                </div>
+            </div>
+            <div class="faqs-container">
+                <div class="faqs-question">¿Puedo cambiar de plan más adelante?</div>
+                <div class="faqs-content">
+                    <p>Sí, puedes cambiar de plan en cualquier momento, ya sea desde la web o acudiendo a recepción para hablar con el encargado.</p>
+                </div>
+            </div>
+        </div>
+        <div class="tickets">
+            <div class="tickets-left">
+                <h1>¿Sigues con dudas?</h1>
+                <p>No dudes en enviar un ticket para recibir una ayuda más personalizada y directa</p>
+                <a href="/tickets">Contactanos</a>
+            </div>
+            <div class="tickets-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-report">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" />
+                    <path d="M12 8v3" />
+                    <path d="M12 14v.01" />
+                </svg>
             </div>
         </div>
     </section>
 
 </body>
+<script>
+    const faqs = document.querySelectorAll('.faqs-container');
+
+    faqs.forEach(faq => {
+        const question = faq.querySelector('.faqs-question');
+        const content = faq.querySelector('.faqs-content');
+
+
+        content.style.transition = "height 0.3s ease, padding 0.3s ease";
+
+        question.addEventListener('click', () => {
+            const isActive = faq.classList.contains('active');
+
+            faqs.forEach(item => {
+                const c = item.querySelector('.faqs-content');
+                c.style.height = 0;
+                item.classList.remove('active');
+            });
+
+            if (!isActive) {
+                faq.classList.add('active');
+                content.style.height = content.scrollHeight + "px";
+            }
+        });
+
+    });
+</script>
 
 </html>
