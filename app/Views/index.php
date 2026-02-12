@@ -281,6 +281,7 @@
             align-items: center;
         }
         .pricing-basic{
+            margin-top: 20px;
             background-color: #fff;
             border-radius: 42px;
             width: 400px;
@@ -289,11 +290,16 @@
             justify-content: center;
             align-items: center;
         }
+        .pricing-basic h3{
+            font-weight: 800;
+            font-size: 30px;
+        }
         .pricing-basic p{
             color: #000;
             width: 250px;
             text-wrap: wrap;
             font-size: 18px;
+            font-weight: bold;
         }
 
         .pricing-basic img{
@@ -386,14 +392,14 @@
             <div class="why-us-pricing">
                 <div class="pricing-basic">
                     <div class="basic-image">
-                        <img src="<?= base_url('assets/img/auth/pricing-basic.jpg') ?>" >
+                        <img src="<?= base_url('assets/img/pricing-basic.jpg') ?>" >
                     </div>
                     <h3>PLAN BASICO</h3>
                     <p>·Acceso completo sala de entrenamientos de musculación libre y máquinas</p>
                 </div>
                 <div class="pricing-premium">
                     <div class="premium-image">
-                        <img src="<?= base_url('assets/img/auth/pricing-premium.jpg') ?>">                        
+                        <!-- <img src="<?= base_url('assets/img/pricing-premium.jpg') ?>">                         -->
                     </div>
                     <h3>PLAN PREMIUN</h3>
                 </div>

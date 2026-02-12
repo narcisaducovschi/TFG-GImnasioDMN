@@ -1,7 +1,7 @@
 
 # Changelog
 Todos los cambios de este proyecto serán indicados en este archvio
-
+---
 ## 5 de febrero de 2026
 ### Añadidos
 - Página principal (index.php)
@@ -9,3 +9,10 @@ Todos los cambios de este proyecto serán indicados en este archvio
 - Vista Registro (auth/register.php)
 - Vista Pasarela de pago (auth/payment.php)
 - Componente Header (partials/header.php)
+
+---
+## 12 de febrero de 2026
+### Añadidos
+- Página principal de la tienda (tienda/tienda.php)
+### Modificados
+- Página principal (index.php)
