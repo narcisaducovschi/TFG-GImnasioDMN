@@ -13,11 +13,11 @@
             src="<?= base_url('assets/img/logo.png') ?>"
             alt="Logo de gimnasio DMN Fitness"
             style="
-                height: 100px;
+                height: 170px;
                 width: auto;
                 object-fit: contain;
                 display: block;
-                padding-top: 10px
+                padding-top: 20px
             ">
     </div>
 
