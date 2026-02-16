@@ -12,7 +12,8 @@
         }
 
         .logo-container img {
-            height: 90px;
+            height: 180px;
+            margin-top: 30px;
             width: auto;
             object-fit: contain;
         }
