@@ -39,7 +39,7 @@
                 <h1>126</h1>
                 <h1>NUEVAS<br>MAQUINAS</h1>
             </div>
-            <p>Una comunidad que crece cada día, únete a nosotros y disfruta de las ventajas</p>
+            <p>Una comunidad que crece cada día, únete a nosotros y disfruta de las ventajas.</p>
         </div>
 
         <div class="info-right">
@@ -66,7 +66,7 @@
     <!-- ¿Por qué nosotros section ? -->
     <section class="why-us-section">
         <h2>¿Por qué nosotros?</h2>
-        <p>Todo lo que necesitas para entrenar sin excusas</p>
+        <p>Todo lo que necesitas para entrenar sin excusas.</p>
         <div class="why-us-container">
             <div class="why-us-info">
                 <div class="box">
@@ -85,7 +85,7 @@
                         <path d="M10.01 17h.005" />
                     </svg>
                     <h3>Abiertos todo el año</h3>
-                    <p>Estamos abiertos los 365 días del año, desde las 6 am hasta las 10pm </p>
+                    <p>Estamos abiertos los 365 días del año, desde las 6 am hasta las 10pm.</p>
                 </div>
                 <div class="box">
                     <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-clipboard-text">
@@ -96,7 +96,7 @@
                         <path d="M9 16h6" />
                     </svg>
                     <h3>Rutinas personalizadas</h3>
-                    <p>Añade y modifica tus rutinas a tu gusto</p>
+                    <p>Añade y modifica tus rutinas a tu gusto.</p>
                 </div>
                 <div class="box">
                     <svg class='icon' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c2c520" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chalkboard-teacher">
@@ -106,7 +106,7 @@
                         <path d="M17 19a2 2 0 0 0 -2 -2h-2a2 2 0 0 0 -2 2" />
                     </svg>
                     <h3>Los mejores profesionales</h3>
-                    <p>Un equipo experto que te acompaña en cada paso de tu transformación</p>
+                    <p>Un equipo experto que te acompaña en cada paso de tu transformación.</p>
                 </div>
             </div>
             <div class="separator-h"></div>
@@ -124,7 +124,7 @@
                         <img src="<?= base_url('assets/img/pricing-premium.jpg') ?>">
                     </div>
                     <h3>PLAN PREMIUM</h3>
-                    <p>·Entrenamientos guiados con entrenadores personales, fuentes de agua con vitaminas y acceso a todas las clases </p>
+                    <p>·Entrenamientos guiados con entrenadores personales, fuentes de agua con vitaminas y acceso a todas las clases. </p>
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@
         <div class="tickets">
             <div class="tickets-left">
                 <h1>¿Sigues con dudas?</h1>
-                <p>No dudes en enviar un ticket para recibir una ayuda más personalizada y directa</p>
+                <p>No dudes en enviar un ticket para recibir una ayuda más personalizada y directa.</p>
                 <a href="/tickets">Contactanos</a>
             </div>
             <div class="tickets-icon">
