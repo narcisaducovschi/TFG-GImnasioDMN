@@ -52,7 +52,11 @@
     </div>
 
     <div class="header-links">
+        <?php
+        if(uri_string() !== 'shop'){
+        ?>
         <a href="/shop" class="header-btn">Tienda</a>
+        <?php };?>
         <a href="/login" class="header-btn">Iniciar Sesión</a>
         <a href="/register" class="header-btn">Registrarse</a>
     </div>
