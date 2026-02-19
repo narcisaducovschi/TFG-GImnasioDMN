@@ -8,4 +8,8 @@ class ShopController extends BaseController
     {
         return view('tienda/tienda');
     }
+        public function buscar(): string
+    {
+        return view('tienda/buscar');
+    }
 }
