@@ -45,8 +45,10 @@
     </style>
 
     <div class="logo-container">
-        <img src="<?= base_url('assets/img/logo.png') ?>" 
-             alt="Logo de gimnasio DMN Fitness">
+        <a href="/">
+            <img src="<?= base_url('assets/img/logo.png') ?>"
+                alt="Logo de gimnasio DMN Fitness">
+        </a>
     </div>
 
     <div class="header-links">
