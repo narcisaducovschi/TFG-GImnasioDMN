@@ -148,7 +148,7 @@
                 <label for="password">Contraseña</label>
                 <input type="password" placeholder="Introduce tu contraseña" name="password" id="password">
                 <button id="loginBtn">Iniciar sesión</button>
-                <small>¿Aún no eres socio? <a href="#">Inscríbete</a></small>
+                <small>¿Aún no eres socio? <a href="/register">Inscríbete</a></small>
             </form>
         </div>
 

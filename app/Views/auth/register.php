@@ -243,7 +243,7 @@
                     </div>
                     <div class="form-footer">
                         <button type="submit" id="pagoBtn">Continuar al pago</button>
-                        <small>¿Ya eres socio? <a href="#">Inicia sesión</a></small>
+                        <small>¿Ya eres socio? <a href="/login">Inicia sesión</a></small>
                     </div>
                 </div>
 
