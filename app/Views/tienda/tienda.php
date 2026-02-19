@@ -165,7 +165,7 @@
                 </p>
 
                 <!-- Botón -->
-                <a href="#" class="hero-btn">
+                <a href="/search" class="hero-btn">
                     COMPRA YA
                 </a>
 
