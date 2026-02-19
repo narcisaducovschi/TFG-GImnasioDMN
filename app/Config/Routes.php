@@ -16,5 +16,5 @@ $routes->get('/search', 'ShopController::buscar');
 
 // Usuarios
 
-$routes->get('/home', 'UserController::tienda');
+$routes->get('/home', 'UserController::index');
 $routes->get('/routines', 'UserController::routine');

@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+/* CLASSES SECTION */
+
+.classes {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.class-card {
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+}
+.class-card:nth-child(1) {
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+}
+
+.class-card:nth-child(2) {
+    background: linear-gradient(135deg, #f472b6, #ec4899);
+}
+
+.class-card:nth-child(3) {
+    background: linear-gradient(135deg, #fb7185, #f43f5e);
+}
+/* ROUTINE */
+
+.routine {
+    display: flex;
+    gap: 30px;
+}
+
+.routine-left {
+    flex: 2;
+}
+
+.routine-right {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+}
+
+.exercise-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
