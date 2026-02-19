@@ -488,7 +488,7 @@
 <body>
 
     <!-- Header Nav -->
-    <?= $this->include('partials/header_buscar') ?>
+    <?= $this->include('partials/header') ?>
 
     <!-- Hero -->
     <section class="hero">
