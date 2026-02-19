@@ -664,4 +664,5 @@
     });
 </script>
 
+<?= $this->include('partials/scripts') ?>
 </html>

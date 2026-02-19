@@ -1,0 +1,170 @@
+/* ===== CHATBOX DMN ===== */
+
+        :root {
+            --dmn-yellow: #FFC300;
+            --dmn-black: #000000;
+            --dmn-dark: #111111;
+            --dmn-gray: #1A1A1A;
+        }
+
+        /* BOTÓN FLOTANTE */
+        .gym-chat-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
+            background: var(--dmn-yellow);
+            color: black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 195, 0, 0.4);
+            transition: 0.3s;
+            z-index: 9999;
+        }
+
+        .gym-chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 35px rgba(255, 195, 0, 0.6);
+        }
+
+        /* CHATBOX */
+        .gym-chatbox {
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            width: 360px;
+            height: 500px;
+            background: var(--dmn-dark);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 195, 0, 0.15);
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .gym-chatbox.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* HEADER */
+        .gym-chat-header {
+            background: var(--dmn-black);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dmn-yellow);
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 195, 0, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--dmn-yellow);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .gym-close-btn {
+            background: none;
+            border: none;
+            color: var(--dmn-yellow);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* BODY */
+        .gym-chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MENSAJES */
+        .gym-message {
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            max-width: 75%;
+        }
+
+        .gym-message.bot {
+            background: #1f1f1f;
+            color: white;
+            align-self: flex-start;
+            border: 1px solid rgba(255, 195, 0, 0.1);
+        }
+
+        .gym-message.user {
+            background: var(--dmn-yellow);
+            color: black;
+            font-weight: 500;
+            align-self: flex-end;
+        }
+
+        /* FOOTER */
+        .gym-chat-footer {
+            padding: 12px;
+            display: flex;
+            background: var(--dmn-black);
+            border-top: 1px solid rgba(255, 195, 0, 0.2);
+        }
+
+        .gym-chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 195, 0, 0.3);
+            outline: none;
+            font-size: 14px;
+            background: #1c1c1c;
+            color: white;
+        }
+
+        .gym-chat-footer input::placeholder {
+            color: #aaa;
+        }
+
+        .gym-chat-footer button {
+            margin-left: 10px;
+            padding: 10px 16px;
+            border-radius: 20px;
+            border: none;
+            background: var(--dmn-yellow);
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .gym-chat-footer button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 195, 0, 0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .gym-chatbox {
+                width: 95%;
+                right: 2.5%;
+                bottom: 90px;
+            }
+        }

@@ -7,11 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet">
+    <?= $this->include('partials/css_links') ?>
     <!-- Estilos -->
     <style>
         html,
@@ -140,6 +136,8 @@
 <body>
 
     <?= $this->include('partials/header') ?>
+    <?= $this->include('partials/chatbot') ?>
+
     <!-- =========================
              HERO SECTION
         ========================= -->
@@ -179,9 +177,7 @@
             </div>
 
         </div>
-
     </section>
-
 </body>
-
+<script src="<?= base_url('assets/js/chatbot.js') ?>"></script>
 </html>
