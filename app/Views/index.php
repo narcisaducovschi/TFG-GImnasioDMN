@@ -50,15 +50,17 @@
     <!-- Publicidad de la tienda -->
     <section class="store-section">
         <div class="store-flex">
-            <div class="store-left"></div>
+            <div class="store-left">
+                <img src="<?= base_url('assets/img/promo1.png') ?>">
+            </div>
             <div class="store-right">
-                <div></div>
-                <div></div>
+                <div><img src="<?= base_url('assets/img/promo2.png') ?>"></div>
+                <div><img src="<?= base_url('assets/img/promo3.png') ?>"></div>
             </div>
         </div>
 
         <div class="store-button">
-            <a href="/tienda">VER TODOS LOS PRODUCTOS</a>
+            <a href="/shop">VER TODOS LOS PRODUCTOS</a>
         </div>
     </section>
     <!-- ¿Por qué nosotros section ? -->
@@ -168,33 +170,5 @@
     </section>
 
 </body>
-<script>
-    const faqs = document.querySelectorAll('.faqs-container');
-
-    faqs.forEach(faq => {
-        const question = faq.querySelector('.faqs-question');
-        const content = faq.querySelector('.faqs-content');
-
-
-        content.style.transition = "height 0.3s ease, padding 0.3s ease";
-
-        question.addEventListener('click', () => {
-            const isActive = faq.classList.contains('active');
-
-            faqs.forEach(item => {
-                const c = item.querySelector('.faqs-content');
-                c.style.height = 0;
-                item.classList.remove('active');
-            });
-
-            if (!isActive) {
-                faq.classList.add('active');
-                content.style.height = content.scrollHeight + "px";
-            }
-        });
-
-    });
-</script>
-
-<?= $this->include('partials/scripts') ?>
+<script src="<?= base_url('assets/js/index.js') ?>"></script>
 </html>
