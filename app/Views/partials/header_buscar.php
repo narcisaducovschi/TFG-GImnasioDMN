@@ -1,3 +1,11 @@
+<style>
+    #search-input::placeholder {
+        color: #fff;
+        opacity: 0.8;
+        padding-left: 5px;
+    }
+</style>
+
 <header
     style="
         display: flex;
@@ -9,24 +17,32 @@
         background: #000;
     ">
     <div style="display: flex; align-items: center; justify-content:space-between">
-        <img
-            src="<?= base_url('assets/img/logo.png') ?>"
-            alt="Logo de gimnasio DMN Fitness"
-            style="
-                height: 100px;
-                width: auto;
-                object-fit: contain;
-                display: block;
-                padding-top: 10px
-            ">
+        <a href="<?= base_url('/') ?>">
+            <img
+                src="<?= base_url('assets/img/logo.png') ?>"
+                alt="Logo de gimnasio DMN Fitness"
+                style="
+                    height: 100px;
+                    width: auto;
+                    object-fit: contain;
+                    display: block;
+                    padding-top: 10px
+                ">
+        </a>
     </div>
 
     <div style="display: flex;">
 
-        <input placeholder="Buscar Producto"
+        <input id="search-input" placeholder="Buscar Producto"
             style="
                 height: 50px;
                 width: 400px;
+                border-radius: 10px;
+                background-color: #575858;
+                color: #fff;
+                padding: 0 15px;
+                border: none;
+                font-size: 16px;
             
 
             ">
