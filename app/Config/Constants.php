@@ -77,3 +77,20 @@ defined('EXIT_USER_INPUT')     || define('EXIT_USER_INPUT', 7);     // invalid u
 defined('EXIT_DATABASE')       || define('EXIT_DATABASE', 8);       // database error
 defined('EXIT__AUTO_MIN')      || define('EXIT__AUTO_MIN', 9);      // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125);    // highest automatically-assigned error code
+
+
+/**
+ * Constante con los días de la semana
+ * la cosa es usar data('l') , que devuelve
+ * el día de la semana en inglés,
+ * Y hacer DIAS_SEMANA[date('l')] y los de en español
+ */
+defined('DIAS_SEMANA') || define('DIAS_SEMANA', [
+    'Sunday'    => 'Domingo',
+    'Monday'    => 'Lunes',
+    'Tuesday'   => 'Martes',
+    'Wednesday' => 'Miércoles',
+    'Thursday'  => 'Jueves',
+    'Friday'    => 'Viernes',
+    'Saturday'  => 'Sábado',
+]);
