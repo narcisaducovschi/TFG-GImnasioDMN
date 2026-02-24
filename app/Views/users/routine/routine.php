@@ -32,9 +32,44 @@
                     <h2>Viernes</h2> <!-- Cambiar día con PHP y DB -->
                     <a href="#"> <img src="<?= base_url('assets/img/icons/pencil.svg'); ?>">Editar rutina</a><!--Cambiar href -->
                 </div>
-                <h2>Espalda</h2> <!-- Cambiar día con PHP y DB -->
+                <p>Espalda</p> <!-- Cambiar día con PHP y DB -->
 
             </div>
+            <!-- Ejercicios (PHP + DB) -->
+            <div class="exercice">
+                <div class="exercice-container">
+                    <h5>Dominadas</h5> <!-- Nombre del ejercicio -->
+                    <div class="exercice-info">
+                        <div class="exercice-series-reps">
+                            <p>Series: 4</p> <!-- Cambiar numero con PHP y DB-->
+                            <p>Repeticiones: 12</p>  <!-- Cambiar numero con PHP y DB-->
+                        </div>
+                        <div class="exercice-notes">
+                            <p>Notas: </p>
+                            <p>Última serie negativa</p>
+                        </div>
+                    </div>
+                     <a href="#"> <img src="<?= base_url('assets/img/icons/pencil.svg'); ?>">Editar nota</a> <!-- Cambiar href -->
+                </div>
+            </div>
+            <div class="exercice">
+                <div class="exercice-container">
+                    <h5>Remo con barra</h5> <!-- Nombre del ejercicio -->
+                    <div class="exercice-info">
+                        <div class="exercice-series-reps">
+                            <p>Series: 3 </p> <!-- Cambiar numero con PHP y DB-->
+                            <p>Repeticiones: 12</p>  <!-- Cambiar numero con PHP y DB-->
+                        </div>
+                        <div class="exercice-notes">
+                            <p>Notas: </p>
+                            <p>Grabarme haciendo el ejercicio para preguntar al entrenador por la técnica</p>
+                        </div>
+                       <!-- Cambiar href -->
+                    </div>
+                     <a href="#"> <img src="<?= base_url('assets/img/icons/pencil.svg'); ?>">Editar nota</a> 
+                </div>
+            </div>
+
         </div>
 
     </div>
