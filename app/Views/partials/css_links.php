@@ -5,6 +5,7 @@
 <!-- Usuarios -->
 <link rel="stylesheet" href="<?= base_url('assets/css/users/users.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/users/routine.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/users/routine_new.css') ?>">
 
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">

@@ -15,4 +15,8 @@ class UserController extends BaseController
     {
         return view('users/routine/routine');
     }
+    public function createRoutine(): string
+    {
+        return view('users/routine/routine_new');
+    }
 }

@@ -18,3 +18,4 @@ $routes->get('/search', 'ShopController::buscar');
 
 $routes->get('/home', 'UserController::index');
 $routes->get('/routines', 'UserController::routine');
+$routes->get('/create-routine', 'UserController::createRoutine'); // <-- Editar esta ruta
