@@ -104,4 +104,5 @@ input{
     flex-direction: column;
     justify-content: center;
     border-radius: 999999px; 
+    cursor: pointer;
 } 

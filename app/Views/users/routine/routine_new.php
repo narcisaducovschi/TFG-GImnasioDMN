@@ -12,7 +12,7 @@
     <?= $this->include('partials/sidebar') ?>
 
     <div class="container-new">
-         <!-- Cambiar con PHP -->
+        <!-- Cambiar con PHP -->
         <form action="/" id="routine-new-form" method="POST">
             <h3>Día</h3><br>
             <div class="form-header">
@@ -39,7 +39,7 @@
                     </label>
                     <input type="text" id="exercice_repetitions" name="exercice_repetitions" placeholder="">
                 </div>
-                <div  class="add-exercice-note">
+                <div class="add-exercice-note">
                     <label for="exercice_notes">Notas (Opcional):</label>
                     <input type="text" id="exercice_notes" name="exercice_notes">
                 </div>
@@ -57,5 +57,6 @@
 
 
 </body>
+<script src="<?= base_url('assets/js/users/routine_new.js') ?>"></script>
 
 </html>
