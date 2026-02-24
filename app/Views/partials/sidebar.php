@@ -25,7 +25,7 @@ $sidebar_links = [
         <?php foreach ($sidebar_links as $link){ ?>
             <a href="<?= base_url($link['href']) ?>" 
                class="sidebar-link <?= ($current_uri == ltrim($link['href'], '/')) ? 'active' : '' ?>">
-                <img src="<?= base_url('assets/img/sidebar-icons/' . $link['icon']) ?>" alt="">
+                <img src="<?= base_url('assets/img/icons/' . $link['icon']) ?>" alt="">
                 <?= $link['text'] ?>
             </a>
         <?php } ?>

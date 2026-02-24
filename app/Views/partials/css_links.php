@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/sidebar.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/chatbot.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/index.css') ?>">
+
+<!-- Usuarios -->
 <link rel="stylesheet" href="<?= base_url('assets/css/users/users.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/css/users/routine.css') ?>">
 
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
