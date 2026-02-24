@@ -1,5 +1,6 @@
 
 .container-new{
+    background-color: #fff;
     width: 70%;
     height: auto;
     margin: 5% 25%;
@@ -99,5 +100,8 @@ input{
 
 .btn-new-container a{
     border: 1px solid #d3d3d3;
-    border-radius: 999999px; /* Arreglar */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 999999px; 
 } 

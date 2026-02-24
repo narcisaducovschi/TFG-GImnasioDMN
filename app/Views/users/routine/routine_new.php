@@ -49,6 +49,9 @@
                 <a id="minus"><img src="<?= base_url('assets/img/icons/minus.svg'); ?>"></a>
             </div>
         </form> <!-- Camibar action -->
+        <!-- ToDo: 
+        Con JS que pille plus y minus,  
+        -->
 
     </div>
 
