@@ -67,3 +67,25 @@
     margin: 0;
     padding: 0;
 }
+
+.home-bottom-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.routine-preview-container h2 {
+    margin: 5% 0%;
+}
+
+.routine-preview {
+    width: 170%;
+    height: 225px;
+    border: 1px solid #d3d3d3;
+    margin: 0;
+}
+
+.imc-container{
+    margin-right: 5%;
+}
