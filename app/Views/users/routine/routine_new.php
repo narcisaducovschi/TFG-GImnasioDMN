@@ -23,25 +23,27 @@
                 <button>Enviar</button>
             </div>
             <br>
-            <h3>Ejercicios: </h3>
-            <div class="add-exercice-container">
-                <div class="add-exercice-info">
-                    <label for="exercice_name">
-                        Nombre del ejercicio
-                    </label>
-                    <input type="text" id="exercice_name" name="exercice_name" placeholder="Ej: Press banca, dominadas, etc...">
-                    <label for="exercice_name">
-                        Nº de series
-                    </label>
-                    <input type="text" id="exercice_series" name="exercice_series" placeholder="">
-                    <label for="exercice_name">
-                        Nº de repeticiones
-                    </label>
-                    <input type="text" id="exercice_repetitions" name="exercice_repetitions" placeholder="">
-                </div>
-                <div class="add-exercice-note">
-                    <label for="exercice_notes">Notas (Opcional):</label>
-                    <input type="text" id="exercice_notes" name="exercice_notes">
+            <div id="exercices-list">
+                <h3>Ejercicios: </h3>
+                <div class="add-exercice-container">
+                    <div class="add-exercice-info">
+                        <label for="exercice_name">
+                            Nombre del ejercicio
+                        </label>
+                        <input type="text" id="exercice_name" name="exercice_name" placeholder="Ej: Press banca, dominadas, etc...">
+                        <label for="exercice_name">
+                            Nº de series
+                        </label>
+                        <input type="text" id="exercice_series" name="exercice_series" placeholder="">
+                        <label for="exercice_name">
+                            Nº de repeticiones
+                        </label>
+                        <input type="text" id="exercice_repetitions" name="exercice_repetitions" placeholder="">
+                    </div>
+                    <div class="add-exercice-note">
+                        <label for="exercice_notes">Notas (Opcional):</label>
+                        <input type="text" id="exercice_notes" name="exercice_notes">
+                    </div>
                 </div>
             </div>
             <div class="btn-new-container">

@@ -72,6 +72,11 @@ input{
     border: 1px solid #d3d3d3;
     border-radius: 25px;
     padding: 1% 5%;
+    margin-top: 2%;
+}
+
+.add-exercice-container:first-child{
+    margin-top: 0%;
 }
 
 .add-exercice-container label{
@@ -106,3 +111,4 @@ input{
     border-radius: 999999px; 
     cursor: pointer;
 } 
+
