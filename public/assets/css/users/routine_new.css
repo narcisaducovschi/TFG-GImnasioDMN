@@ -1,0 +1,103 @@
+
+.container-new{
+    width: 70%;
+    height: auto;
+    margin: 5% 25%;
+    font-family: Montserrat, sans-serif;
+    border: 1px solid #d3d3d3;
+    border-radius: 25px;
+}
+
+.container-new form{
+    padding: 1% 5%;
+}
+.container-new h3{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.form-header{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-subheader{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header button {
+    background-color: #fed107;
+    border: 1px solid #d3d3d3;
+    border-radius: 25px;
+    padding: 1% 5%;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-header button:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+
+label{
+    color: #000;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+input{
+    color: #000;
+    font-weight: 400;
+    font-size: 16px;
+    width: 334px;
+    height: 33px;
+    border-radius: 25px;
+    border: 1px solid #d3d3d3;
+    padding: 3%;
+}
+
+.add-exercice-container{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 5%;
+    border: 1px solid #d3d3d3;
+    border-radius: 25px;
+    padding: 1% 5%;
+}
+
+.add-exercice-container label{
+    font-size: 20px;
+
+}
+
+.add-exercice-info{
+    display: flex;
+    flex-direction: column;
+}
+
+#exercice_notes{
+    height: 87%;
+}
+
+.btn-new-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.btn-new-container a{
+    border: 1px solid #d3d3d3;
+    border-radius: 999999px; /* Arreglar */
+} 
