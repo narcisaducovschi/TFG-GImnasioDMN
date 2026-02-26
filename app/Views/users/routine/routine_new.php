@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DMN Fitness | Rutina</title>
     <?= $this->include('partials/css_links') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/users/routine_new.css') ?>">
 </head>
 
 <body>
@@ -27,22 +28,22 @@
                 <h3>Ejercicios: </h3>
                 <div class="add-exercice-container">
                     <div class="add-exercice-info">
-                        <label for="exercice_name">
+                        <label>
                             Nombre del ejercicio
                         </label>
-                        <input type="text" id="exercice_name" name="exercice_name" placeholder="Ej: Press banca, dominadas, etc...">
-                        <label for="exercice_name">
+                        <input type="text" name="exercice_name[]" placeholder="Ej: Press banca, dominadas, etc...">
+                        <label>
                             Nº de series
                         </label>
-                        <input type="text" id="exercice_series" name="exercice_series" placeholder="">
-                        <label for="exercice_name">
+                        <input type="text" name="exercice_series[]" placeholder="">
+                        <label>
                             Nº de repeticiones
                         </label>
-                        <input type="text" id="exercice_repetitions" name="exercice_repetitions" placeholder="">
+                        <input type="text" name="exercice_repetitions[]" placeholder="">
                     </div>
                     <div class="add-exercice-note">
-                        <label for="exercice_notes">Notas (Opcional):</label>
-                        <input type="text" id="exercice_notes" name="exercice_notes">
+                        <label>Notas (Opcional):</label>
+                        <input type="text" name="exercice_notes[]">
                     </div>
                 </div>
             </div>
