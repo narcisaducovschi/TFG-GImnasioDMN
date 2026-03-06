@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DMN Fitness - Pasarela de pago</title>
+    <title>DMN Fitness - Selección de suscripción</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -32,7 +32,7 @@
             background-color: #fff;
             border-radius: 25px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 600px;
             padding: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
@@ -42,66 +42,13 @@
             font-weight: 800;
             color: #1a1a1a;
             margin-bottom: 30px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        .form-section h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-            border-bottom: 3px solid #fed107;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 15px;
-        }
-        .input-row .input-group {
-            flex: 1;
-        }
-
-        label.field-label {
-            font-size: 14px;
-            font-weight: 800;
-            margin-bottom: 8px;
-            color: #333;
-            letter-spacing: 0.5px;
-        }
-
-        input[type="text"], input[type="email"], input[type="password"] {
-            padding: 14px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            outline: none;
-            width: 100%;
-        }
-
-        input:focus {
-            border-color: #fed107;
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(254, 209, 7, 0.1);
+            text-align: center;
         }
 
         .plans-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 20px;
             margin-bottom: 25px;
         }
 
@@ -148,13 +95,13 @@
         }
 
         .plan-text h4 {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 800;
             color: #1a1a1a;
         }
 
         .plan-text p {
-            font-size: 11px;
+            font-size: 12px;
             color: #7e7c7c;
             font-weight: 500;
         }
@@ -168,7 +115,7 @@
 
         .plan-card:has(input[type="radio"]:checked) {
             border-color: #fed107;
-            background-color: rgba(254, 209, 7, 0.02);
+            background-color: rgba(254, 209, 7, 0.05);
         }
 
         .plan-card:has(input[type="radio"]:checked) .radio-circle {
@@ -180,7 +127,6 @@
         }
 
         .form-footer {
-            grid-column: span 2;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -218,95 +164,48 @@
             color: #fed107;
             font-weight: 700;
         }
-        /* Media Querys */
-        @media (max-width: 850px) {
-            .form-grid { grid-template-columns: 1fr; gap: 30px; }
-            .form-footer { grid-column: span 1; }
+
+        @media (max-width: 500px) {
             button#pagoBtn { width: 100%; }
         }
     </style>
 </head>
-
 <body>
     <div id="form-container">
-        <h2 class="main-title">Pasarela de pago</h2>
+        <h2 class="main-title">Selecciona tu suscripción</h2>
 
-        <form action="registro" method="post">
-            <div class="form-grid">
+        <form action="<?= base_url('stripe/subscription') ?>" method="post">
+            <div class="plans-container">
 
-                <div class="form-section">
-                    <h3>Datos de pago</h3>
-
-                    <div class="input-group">
-                        <label class="field-label" for="card_number">Número de tarjeta</label>
-                        <input type="text" placeholder="0000 0000 0000 0000" name="card_number" id="card_number" required>
-                    </div>
-
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label class="field-label" for="expire_date">Vencimiento</label>
-                            <input type="text" placeholder="MM/AA" name="expire_date" id="expire_date" required>
-                        </div>
-                        <div class="input-group">
-                            <label class="field-label" for="cvv">CVV</label>
-                            <input type="text" placeholder="123" name="cvv" id="cvv" required>
+                <label class="plan-card">
+                    <input type="radio" name="price_id" value="<?= PLANES['PLAN_BASICO'];?>">
+                    <div class="plan-info">
+                        <div class="radio-circle"></div>
+                        <div class="plan-text">
+                            <h4>Plan Básico</h4>
+                            <p>Perfecto para empezar</p>
                         </div>
                     </div>
+                    <div class="plan-price">20 € / Mes</div>
+                </label>
 
-                    <div class="input-group">
-                        <label class="field-label" for="titular">Titular de la tarjeta</label>
-                        <input type="text" placeholder="Nombre completo" name="titular" id="titular" required>
+                <label class="plan-card">
+                    <input type="radio" name="price_id" value="<?= PLANES['PLAN_PREMIUM'] ?>" checked>
+                    <div class="plan-info">
+                        <div class="radio-circle"></div>
+                        <div class="plan-text">
+                            <h4>Plan Premium</h4>
+                            <p>Recomendado</p>
+                        </div>
                     </div>
-                </div>
+                    <div class="plan-price">30 € / Mes</div>
+                </label>
 
-                <div class="form-section">
-                    <h3>Selecciona tu suscripción</h3>
-                    
-                    <div class="plans-container">
-                        <label class="plan-card">
-                            <input type="radio" name="plan" value="1">
-                            <div class="plan-info">
-                                <div class="radio-circle"></div>
-                                <div class="plan-text">
-                                    <h4>Plan Básico</h4>
-                                    <p>Perfecto para empezar</p>
-                                </div>
-                            </div>
-                            <div class="plan-price">9,99 € / Mes</div>
-                        </label>
+            </div>
 
-                        <label class="plan-card">
-                            <input type="radio" name="plan" value="2" checked>
-                            <div class="plan-info">
-                                <div class="radio-circle"></div>
-                                <div class="plan-text">
-                                    <h4>Plan Premium</h4>
-                                    <p>Recomendado</p>
-                                </div>
-                            </div>
-                            <div class="plan-price">19,99 € / Mes</div>
-                        </label>
-
-                        <label class="plan-card">
-                            <input type="radio" name="plan" value="3">
-                            <div class="plan-info">
-                                <div class="radio-circle"></div>
-                                <div class="plan-text">
-                                    <h4>Plan Pro</h4>
-                                    <p>Lo mejor de lo mejor</p>
-                                </div>
-                            </div>
-                            <div class="plan-price">29,99 € / Mes</div>
-                        </label>
-                    </div>
-                     <div class="form-footer">
-                    <button type="submit" id="pagoBtn">Confirmar suscripción</button>
-                    <small>¿Ya eres socio? <a href="#">Inicia sesión</a></small>
-                </div>
-                </div>
-
-               
-
+            <div class="form-footer">
+                <button type="submit" id="pagoBtn">Confirmar suscripción</button>
+                <small>¿Ya eres socio? <a href="#">Inicia sesión</a></small>
             </div>
         </form>
     </div>
