@@ -94,3 +94,9 @@ defined('DIAS_SEMANA') || define('DIAS_SEMANA', [
     'Friday'    => 'Viernes',
     'Saturday'  => 'Sábado',
 ]);
+
+/**
+ * Contante con las KEY , y la SECRET de stripe
+ */
+defined('STRIPE_KEY') || define('STRIPE_KEY' , getenv('STRIPE_KEY' , ''));
+defined('STRIPE_SECRET') || define('STRIPE_SECRET' , getenv('STRIPE_SECRET' , ''));

@@ -6,6 +6,7 @@
     <title>DMN Fitness | Bienvenido!! </title>
 
     <?= $this->include('partials/css_links') ?>
+    <link rel="stylesheet" href="<?= base_url('assets/css/users/users.css') ?>">
 </head>
 
 <body>
@@ -61,12 +62,12 @@
             <div class="imc-container">
                 <h2>Calcula tu imc</h2>
                 <div class="imc">
-                    <!-- <form id="imc-form">
+                    <form id="imc-form">
                         <label for="peso">Introduce tu peso: </label>
                         <input type="text" placeholder="Peso en KG (Ej: 70)">
                         <label for="altura">Introduce tu altura: </label>
                         <input type="text" placeholder="Altura en CM (Ej: 172)">
-                    </form> -->
+                    </form>
                 </div>
             </div>
         </div>
