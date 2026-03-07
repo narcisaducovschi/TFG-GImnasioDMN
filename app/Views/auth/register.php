@@ -182,7 +182,7 @@
         <h2 class="main-title">Inscríbete</h2>
         <p class="subtitle">Regístrate y únete a nuestra comunidad de entrenamiento. Lleva un seguimiento de tu progreso, accede a tus clases únicas y controla tu suscripción en un solo lugar.</p>
 
-        <form action="registro" method="post">
+        <form action="<?= base_url('auth/processRegister') ?>" method="post">
             <div class="form-grid">
 
                 <div class="form-section">
@@ -204,8 +204,8 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="correo_electronico">Correo electrónico</label>
-                        <input type="email" placeholder="Introduce tu correo electrónico" name="correo_electronico" id="correo_electronico" required>
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" placeholder="Introduce tu correo electrónico" name="email" id="email" required>
                     </div>
 
                     <div class="input-group">

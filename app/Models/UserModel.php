@@ -34,6 +34,7 @@ class UserModel extends Model
         'email' => 'required|valid_email',
         'password' => 'required|min_length[6]',
         'nombre' => 'required',
+        'apellidos' => 'required',
     ];
 
     protected $validationMessages = [];
