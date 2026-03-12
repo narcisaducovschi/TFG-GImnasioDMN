@@ -10,38 +10,49 @@ use App\Models\UserModel;
 class StripeController extends BaseController
 {
 
-public function subscription()
-{
-    $sessionUser = session()->get('register_data');
+    public function subscription()
+    {
+        $sessionUser = session()->get('register_data');
 
-    if (!$sessionUser) {
-        return redirect()->to('/register');
+        if (!$sessionUser) {
+            return redirect()->to('/register');
+        }
+
+        $priceId = $this->request->getPost('price_id');
+
+        $planes = [
+            PLANES['PLAN_BASICO'] => 5,
+            PLANES['PLAN_PREMIUM'] => 4
+        ];
+
+        if (!isset($planes[$priceId])) {
+            die('Plan no válido');
+        }
+
+        // asignar rol según plan
+        $sessionUser['id_rol'] = $planes[$priceId];
+
+        session()->set('register_data', $sessionUser);
+
+        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
+
+        $session = \Stripe\Checkout\Session::create([
+            'mode' => 'subscription',
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price' => $priceId,
+                'quantity' => 1,
+            ]],
+            'success_url' => base_url('pago-exito') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => base_url('pago-cancelado'),
+        ]);
+
+        return redirect()->to($session->url);
     }
-
-    $priceId = $this->request->getPost('price_id');
-    if (!$priceId) {
-        die('Error: price_id vacío.');
-    }
-
-    Stripe::setApiKey(STRIPE_SECRET);
-
-    $session = Session::create([
-        'mode' => 'subscription',
-        'payment_method_types' => ['card'],
-        'line_items' => [[
-            'price' => $priceId,
-            'quantity' => 1,
-        ]],
-        'success_url' => base_url('pago-exito') . '?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url' => base_url('pago-cancelado'),
-    ]);
-
-    return redirect()->to($session->url);
-}
 
     public function pagoExito()
     {
-        
+
         $sessionId = $this->request->getGet('session_id');
 
         if (!$sessionId) {
