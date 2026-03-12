@@ -60,21 +60,12 @@
     <?= $this->include('partials/header_buscar') ?>
 
     <section>
-        <a href="#">TENDENCIAS</a>
-        <a href="#">PROTEINA</a>
-        <a href="#">CREATINA</a>
-        <a href="#">VITAMINAS</a>
+        <a href="#">SUPLEMENTACION</a>
         <a href="#">ACCESORIOS</a>
         <a href="#">SNACKS</a>
     </section>
 
 
-    <section>
-        <a href="#" ><img src="<?= base_url('assets/img/suplementacion.png') ?>" alt="Suplementación"> </a>
-        <a href="#" ><img src="<?= base_url('assets/img/ropaDeportiva.png') ?>" alt="Ropa Deportiva"> </a>
-        <a href="#" ><img src="<?= base_url('assets/img/ofertas.png') ?>" alt="Ofertas"> </a>
-
-    </section>
 
 
 

@@ -37,7 +37,8 @@
             style="
                 height: 50px;
                 width: 400px;
-                border-radius: 10px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
                 background-color: #575858;
                 color: #fff;
                 padding: 0 15px;
