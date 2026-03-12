@@ -33,7 +33,7 @@ class Auth extends BaseController
             'direccion_extra' => $this->request->getPost('direccion_extra'),
             'codigo_postal' => $this->request->getPost('codigo_postal'),
             'ciudad' => $this->request->getPost('ciudad'),
-            'id_role' => 5,
+            'id_rol' => 5,
         ];
 
         $session->set('register_data', $data);
