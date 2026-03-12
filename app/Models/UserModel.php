@@ -23,7 +23,7 @@ class UserModel extends Model
         'direccion_extra',
         'codigo_postal',
         'ciudad',
-        'id_suscription',
+        'id_suscripcion',
         'id_rol',
         'id_class'
     ];

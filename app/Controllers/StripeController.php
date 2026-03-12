@@ -21,8 +21,8 @@ class StripeController extends BaseController
         $priceId = $this->request->getPost('price_id');
 
         $planes = [
-            PLANES['PLAN_BASICO'] => 5,
-            PLANES['PLAN_PREMIUM'] => 4
+            PLANES['PLAN_BASICO'] => 2,
+            PLANES['PLAN_PREMIUM'] => 3
         ];
 
         if (!isset($planes[$priceId])) {
