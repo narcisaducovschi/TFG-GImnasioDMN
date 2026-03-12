@@ -49,7 +49,6 @@ public function subscription()
         }
 
         Stripe::setApiKey(STRIPE_SECRET);
-        echo $sessionId;
         // Recuperar sesión de Stripe
         $checkoutSession = \Stripe\Checkout\Session::retrieve($sessionId);
 
