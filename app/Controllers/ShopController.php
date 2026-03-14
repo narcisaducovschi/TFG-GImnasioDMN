@@ -12,4 +12,12 @@ class ShopController extends BaseController
     {
         return view('tienda/buscar');
     }
+
+    /**
+     * Devuelve toda la tienda y hace la tabla
+     */
+    public function generarTienda() 
+    {
+        
+    }
 }
