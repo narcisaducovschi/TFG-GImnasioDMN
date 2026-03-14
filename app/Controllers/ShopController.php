@@ -46,6 +46,7 @@ class ShopController extends BaseController
 
             $cards .= '<button class="add-to-cart">';
             $cards .= '<img src="'.base_url('assets/img/icons/shopping-cart.svg').'">';
+            $cards .= 'Añadir al carrito';
             $cards .= '</button>';
 
             $cards .= '</div>';
