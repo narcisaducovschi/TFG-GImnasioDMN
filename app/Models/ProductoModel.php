@@ -15,6 +15,7 @@ class ProductoModel extends Model
     protected $allowedFields = [
         'nombre',
         'descripcion',
+        'grupo',
         'imagen',
         'stock',
         'precio'
@@ -25,6 +26,7 @@ class ProductoModel extends Model
     protected $validationRules = [
         'nombre' => 'required|min_length[3]',
         'descripcion' => 'required',
+        'grupo' , 'required',
         'precio' => 'required|decimal',
         'stock' => 'required|integer'
     ];

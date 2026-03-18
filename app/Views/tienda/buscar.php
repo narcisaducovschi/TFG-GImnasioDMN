@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,27 +59,49 @@
             padding: 30px;
             justify-content: center;
         }
-
-
-
     </style>
 </head>
+
 <body>
 
-<!-- Header Nav -->
-<?= $this->include('partials/header_buscar') ?>
+    <!-- Header Nav -->
+    <?= $this->include('partials/header_buscar') ?>
+    <?php $grupo = 0 ?>
+    <!-- Sección de categorías -->
+    <section>
+        <a href="?grupo=0">TODOS</a>
+        <a href="?grupo=1">SUPLEMENTACION</a>
+        <a href="?grupo=2">ACCESORIOS</a>
+        <a href="?grupo=3">SNACKS</a>
+    </section>
 
-<!-- Sección de categorías -->
-<section>
-    <a href="#">SUPLEMENTACION</a>
-    <a href="#">ACCESORIOS</a>
-    <a href="#">SNACKS</a>
-</section>
+    <!-- Sección productos generados por el controlador -->
+    <section class="productos-grid">
+        <?php foreach ($productos as $producto): ?>
+            <div class="card" data-id="<?= $producto['id'] ?>">
 
-<!-- Sección productos generados por el controlador -->
-<section class="productos-grid">
-    <?= (new \App\Controllers\ShopController())->generarTienda(); ?>
-</section>
+                <div class="image-container">
+                    <img src="<?= base_url('assets/img/TIENDA/productos/' . $producto['imagen']) ?>">
+                </div>
+
+                <div class="info-container">
+                    <h2><?= esc($producto['nombre']) ?></h2>
+                    <p class="description"><?= esc($producto['descripcion']) ?></p>
+                </div>
+
+                <div class="price-section">
+                    <span class="price"><?= esc($producto['precio']) ?>€</span>
+                </div>
+
+                <button class="add-to-cart">
+                    <img src="<?= base_url('assets/img/icons/shopping-cart.svg') ?>">
+                    Añadir al carrito
+                </button>
+
+            </div>
+        <?php endforeach; ?>
+    </section>
 
 </body>
+
 </html>
