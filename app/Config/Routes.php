@@ -13,6 +13,7 @@ $routes->get('pago-exito', 'StripeController::pagoExito');
 $routes->get('pago-cancelado', 'StripeController::pagoCancelado');
 // Routes básico, hay que cambiarlo
 $routes->get('/login', 'Auth::login');
+$routes->post('auth/processLogin', 'Auth::processLogin');
 $routes->get('/register', 'Auth::register');
 $routes->get('/payment', 'Auth::payment');
 $routes->post('auth/processRegister', 'Auth::processRegister');

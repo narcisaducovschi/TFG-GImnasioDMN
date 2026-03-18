@@ -41,7 +41,40 @@ class Auth extends BaseController
         return redirect()->to('/payment');
     }
 
-    public function payment(){
+    public function payment()
+    {
         return view('auth/payment');
+    }
+
+    public function processLogin()
+    {
+
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $userModel = new \App\Models\UserModel();
+        $user = $userModel->where('email', $email)->first();
+
+        if (!$user)
+            return redirect()->to('/login')->with('error', 'El usuario no existe');
+        if (!password_verify($password, $user['password']))
+            return redirect()->to('/login')->with('error', 'La contraseña es incorrecta');
+
+        $session = session();
+        $session->set([
+            'user_id' => $user['id'],
+            'email' => $user['email'],
+            'nombre' => $user['nombre'],
+            'rol' => $user['id_rol'],
+            'isLoggedIn' => true
+        ]);
+
+        return redirect()->to('/home');
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
     }
 }

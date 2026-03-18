@@ -26,7 +26,14 @@
         box-sizing: border-box;
     }
 
-    h1, h2, h3, h4, h5, h6, label, button {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    label,
+    button {
         font-family: Montserrat;
     }
 
@@ -36,13 +43,17 @@
         width: 100%;
         max-width: 968px;
         min-height: 600px;
-        display: flex; /* Divide en dos columnas */
-        overflow: hidden; /* Clave para que la imagen no se salga de las esquinas */
+        display: flex;
+        /* Divide en dos columnas */
+        overflow: hidden;
+        /* Clave para que la imagen no se salga de las esquinas */
     }
 
     #login-content {
-        flex: 1; /* Toma el 50% del espacio */
-        padding: 60px 40px; /* Más espacio interno */
+        flex: 1;
+        /* Toma el 50% del espacio */
+        padding: 60px 40px;
+        /* Más espacio interno */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -57,10 +68,12 @@
     }
 
     #login-content p {
-        font-size: 13px; /* Un poco más legible que 10px */
+        font-size: 13px;
+        /* Un poco más legible que 10px */
         font-weight: 500;
         color: #7e7c7c;
-        margin: 0 0 30px 0; /* Espacio hacia abajo corregido */
+        margin: 0 0 30px 0;
+        /* Espacio hacia abajo corregido */
     }
 
     /* Estilos para que el formulario se vea profesional */
@@ -110,17 +123,16 @@
         object-fit: cover;
     }
 
-    small 
-    {
+    small {
         margin-top: 10px;
     }
-    
-    a{
+
+    a {
         text-decoration: none;
         color: #fed107;
     }
 
-    a:hover{
+    a:hover {
         text-decoration: underline;
     }
 
@@ -129,6 +141,7 @@
         #form-container {
             flex-direction: column;
         }
+
         .login-image {
             display: none;
         }
@@ -138,12 +151,12 @@
 <body>
     <div id="form-container">
         <div id="login-content">
-            <form action="login" method="post">
+            <form action="<?= base_url('/auth/processLogin') ?>" method="post">
                 <h2>Inicio de sesión</h2>
                 <p>Inica sesión en tu cuenta para mantener el control de tu progreso, seguir cada una de tus clases y gestionar tu suscripción de manera sencilla.</p>
 
-                <label for="correo_electronico">Correo electrónico</label>
-                <input type="email" placeholder="Introduce tu correo electrónico" name="correo_electronico" id="correo_electronico">
+                <label for="email">Correo electrónico</label>
+                <input type="email" placeholder="Introduce tu correo electrónico" name="email" id="email">
 
                 <label for="password">Contraseña</label>
                 <input type="password" placeholder="Introduce tu contraseña" name="password" id="password">
@@ -151,7 +164,11 @@
                 <small>¿Aún no eres socio? <a href="/register">Inscríbete</a></small>
             </form>
         </div>
-
+        <?php if (session()->getFlashdata('error')): ?>
+            <div style="color:red; margin-bottom: 15px;">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
         <div class="login-image">
             <img src="<?= base_url('assets/img/auth/login-img.jpg') ?>" alt="Persona realizando ejercicio de fuerza">
         </div>
