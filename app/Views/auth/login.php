@@ -164,11 +164,7 @@
                 <small>¿Aún no eres socio? <a href="/register">Inscríbete</a></small>
             </form>
         </div>
-        <?php if (session()->getFlashdata('error')): ?>
-            <div style="color:red; margin-bottom: 15px;">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        <?php endif; ?>
+
         <div class="login-image">
             <img src="<?= base_url('assets/img/auth/login-img.jpg') ?>" alt="Persona realizando ejercicio de fuerza">
         </div>
