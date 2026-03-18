@@ -1,91 +1,245 @@
+/* ====== Contenedor principal de usuario ====== */
 .users-home-container {
     margin-left: 25%;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .users-home-container h2 {
-    margin-top: 5%;
-    font-size: 30px;
+    margin-top: 2%;
+    font-size: 28px;
     font-weight: 800;
+    color: #1a1a1a;
 }
 
+/* ====== Sección de clases ====== */
 .class-container {
     border: 1px solid #d3d3d3;
     width: 95%;
-    height: auto;
-    margin-top: -2%;
-    border-radius: 10px;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .class-preview {
     display: flex;
-    flex-direction: row;
-    padding: 1%;
-    gap: 2%
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
 }
 
 .class {
     display: flex;
     flex-direction: column;
-    padding: 2% 2% 5% 2%;
-    background-color: #fa5ea9;
-    border-radius: 20px;
+    background-color: #fed107;
+    border-radius: 15px;
+    overflow: hidden;
+    flex: 1 1 245px;
+    max-width: 245px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.class:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 .class h4 {
-    margin: 0;
-    font-size: 24px;
+    margin: 10px 10px 5px 10px;
+    font-size: 20px;
     font-weight: 600;
+    color: #fff;
 }
 
 .class p {
-    margin: 0;
+    margin: 0 10px 10px 10px;
+    color: #fff;
 }
 
 .class img {
-    width: 245px;
-    height: 153px;
+    width: 100%;
+    height: 140px;
     object-fit: cover;
-    border-radius: 20px;
 }
 
+/* ====== Contenedor del profesor ====== */
 .teacher-container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    padding: 0 10px 10px 10px;
 }
 
 .teacher-container img {
     width: 24px;
-    height: auto;
+    height: 24px;
 }
 
-.teacher-container a {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+.teacher-container a img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
-.home-bottom-container{
+/* ====== Sección inferior ====== */
+.home-bottom-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-    flex: 1;
+    gap: 20px;
+    margin-top: 30px;
 }
 
+/* ====== Rutinas ====== */
 .routine-preview-container h2 {
-    margin: 5% 0%;
+    margin-bottom: 15px;
 }
 
 .routine-preview {
-    width: 170%;
+    width: 100%;
+    max-width: 650px;
     height: 225px;
     border: 1px solid #d3d3d3;
-    margin: 0;
+    border-radius: 15px;
+    padding: 10px;
+    overflow-y: auto;
 }
 
-.imc-container{
-    margin-right: 5%;
+/* ====== Formulario IMC ====== */
+.imc-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+#imc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#imc-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#imc-header button {
+    border: none;
+    background-color: #fff;
+}
+
+#imc-header button img {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+}
+
+/* Formulario */
+#imc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#imc-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#imc-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+#imc-form input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#imc-form input:focus {
+    border-color: #fed107;
+}
+
+/* Botón calcular */
+#calcular-imc-btn {
+    background-color: #fed107;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#calcular-imc-btn:hover {
+    background-color: #e0b500;
+    transform: scale(1.02);
+}
+
+/* Resultado */
+#imc-result {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+/* ====== Modal ====== */
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Fondo oscuro semi-transparente */
+    
+    /* Flex para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 25px 20px;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content .guia small {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.3;
 }
