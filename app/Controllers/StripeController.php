@@ -30,7 +30,7 @@ class StripeController extends BaseController
         }
 
         // asignar rol según plan
-        $sessionUser['id_rol'] = $planes[$priceId];
+        $sessionUser['id_suscripcion'] = $planes[$priceId];
 
         session()->set('register_data', $sessionUser);
 
