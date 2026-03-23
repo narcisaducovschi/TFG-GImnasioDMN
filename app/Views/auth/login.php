@@ -166,12 +166,12 @@
 <body>
     <div id="form-container">
         <div id="login-content">
-            <form action="<?= base_url('/auth/processLogin') ?>" method="post">
+            <form action="<?= base_url('/auth/processLogin') ?>" method="post" id="loginForm">
                 <h2>Inicio de sesión</h2>
                 <p>Inica sesión en tu cuenta para mantener el control de tu progreso, seguir cada una de tus clases y gestionar tu suscripción de manera sencilla.</p>
 
                 <label for="email">Correo electrónico</label>
-                <input type="email" placeholder="Introduce tu correo electrónico" name="email" id="email">
+                <input type="text" placeholder="Introduce tu correo electrónico" name="email" id="email">
                 <span class="error-text" id="error-email"></span>
 
                 <label for="password">Contraseña</label>
