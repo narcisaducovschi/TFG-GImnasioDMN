@@ -169,6 +169,8 @@
             <img src="<?= base_url('assets/img/auth/login-img.jpg') ?>" alt="Persona realizando ejercicio de fuerza">
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="<?= base_url('assets/js/auth/login.js') ?>"></script>
 </body>
 
 </html>
