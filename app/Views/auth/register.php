@@ -155,6 +155,18 @@
             text-decoration: underline;
         }
 
+        .error-text {
+            color: #e74c3c;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 5px;
+            display: none;
+        }
+
+        input.invalid {
+            border: 2px solid #e74c3c !important;
+        }
+
         /* Media Querys */
         @media (max-width: 850px) {
             #form-container {
@@ -182,7 +194,7 @@
         <h2 class="main-title">Inscríbete</h2>
         <p class="subtitle">Regístrate y únete a nuestra comunidad de entrenamiento. Lleva un seguimiento de tu progreso, accede a tus clases únicas y controla tu suscripción en un solo lugar.</p>
 
-        <form action="<?= base_url('auth/processRegister') ?>" method="post">
+        <form action="<?= base_url('auth/processRegister') ?>" method="post" id="registerForm">
             <div class="form-grid">
 
                 <div class="form-section">
@@ -190,32 +202,38 @@
 
                     <div class="input-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" placeholder="Introduce tu nombre" name="nombre" id="nombre" required>
+                        <input type="text" placeholder="Introduce tu nombre" name="nombre" id="nombre" >
+                        <span class="error-text" id="error-nombre"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="apellidos">Apellidos</label>
-                        <input type="text" placeholder="Introduce tus apellidos" name="apellidos" id="apellidos" required>
+                        <input type="text" placeholder="Introduce tus apellidos" name="apellidos" id="apellidos" >
+                        <span class="error-text" id="error-apellidos"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="telefono">Número de teléfono</label>
                         <input type="tel" placeholder="Introduce tu número de teléfono" name="telefono" id="telefono">
+                        <span class="error-text" id="error-telefono"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="email">Correo electrónico</label>
-                        <input type="email" placeholder="Introduce tu correo electrónico" name="email" id="email" required>
+                        <input type="text" placeholder="Introduce tu correo electrónico" name="email" id="email">
+                        <span class="error-text" id="error-email"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="password">Contraseña</label>
-                        <input type="password" placeholder="Introduce tu contraseña" name="password" id="password" required>
+                        <input type="password" placeholder="Introduce tu contraseña" name="password" id="password" >
+                        <span class="error-text" id="error-password"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="confirm_password">Confirmar contraseña</label>
-                        <input type="password" placeholder="Vuelve a introducir tu contraseña" name="confirm_password" id="confirm_password" required>
+                        <input type="password" placeholder="Vuelve a introducir tu contraseña" name="confirm_password" id="confirm_password" >
+                        <span class="error-text" id="error-confirm-password"></span>
                     </div>
                 </div>
 
@@ -225,21 +243,25 @@
                     <div class="input-group">
                         <label for="direccion">Dirección</label>
                         <input type="text" placeholder="Ej: Calle Falsa, 123" name="direccion" id="direccion">
+                        <span class="error-text" id="error-direccion"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="direccion_extra">Casa, apartamento, etc.</label>
                         <input type="text" placeholder="Ej: Ático B" name="direccion_extra" id="direccion_extra">
+                        <span class="error-text" id="error-direccion-extra"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="codigo_postal">Código postal</label>
                         <input type="text" placeholder="Introduce tu código postal" name="codigo_postal" id="codigo_postal">
+                        <span class="error-text" id="error-codigo-postal"></span>
                     </div>
 
                     <div class="input-group">
                         <label for="ciudad">Ciudad</label>
                         <input type="text" placeholder="Introduce tu ciudad" name="ciudad" id="ciudad">
+                        <span class="error-text" id="error-ciudad"></span>
                     </div>
                     <div class="form-footer">
                         <button type="submit" id="pagoBtn">Continuar al pago</button>
