@@ -136,6 +136,21 @@
         text-decoration: underline;
     }
 
+    .error-text {
+        color: #e74c3c;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: -15px;
+        /* Para que quede pegado al input */
+        margin-bottom: 15px;
+        display: none;
+        /* Ocultos por defecto */
+    }
+
+    input.invalid {
+        border: 2px solid #e74c3c !important;
+    }
+
     /* Media Querys */
     @media (max-width: 768px) {
         #form-container {
@@ -157,9 +172,11 @@
 
                 <label for="email">Correo electrónico</label>
                 <input type="email" placeholder="Introduce tu correo electrónico" name="email" id="email">
+                <span class="error-text" id="error-email"></span>
 
                 <label for="password">Contraseña</label>
                 <input type="password" placeholder="Introduce tu contraseña" name="password" id="password">
+                <span class="error-text" id="error-password"></span>
                 <button id="loginBtn">Iniciar sesión</button>
                 <small>¿Aún no eres socio? <a href="/register">Inscríbete</a></small>
             </form>
