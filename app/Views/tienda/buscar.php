@@ -78,7 +78,7 @@
     <!-- Sección productos generados por el controlador -->
     <section class="productos-grid">
         <?php foreach ($productos as $producto): ?>
-            <div class="card" data-id="<?= $producto['id'] ?>" data-price="<?= PRODUCTOS_STRIPE[$producto['stripe']] ?>">
+            <div class="card" data-id="<?= $producto['id'] ?>" data-stripe="<?= PRODUCTOS_STRIPE[$producto['stripe']] ?>">
 
                 <div class="image-container">
                     <img src="<?= base_url('assets/img/TIENDA/productos/' . $producto['imagen']) ?>">
