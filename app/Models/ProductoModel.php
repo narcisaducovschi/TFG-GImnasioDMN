@@ -18,7 +18,8 @@ class ProductoModel extends Model
         'grupo',
         'imagen',
         'stock',
-        'precio'
+        'precio',
+        'stripe'
     ];
 
     protected $useTimestamps = false;
