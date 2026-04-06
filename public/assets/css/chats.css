@@ -1,0 +1,218 @@
+/* =========================================
+   CONTENEDOR PRINCIPAL Y ESTRUCTURA
+   ========================================= */
+
+#main-content {
+    margin-left: 200px; /* Ancho de tu sidebar para evitar solapamiento */
+    height: 100vh;      
+    padding: 20px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.chat-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh; /* Altura fija del widget de chat */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden; /* Corta el contenido sobrante para forzar scroll interno */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* =========================================
+   COLUMNA IZQUIERDA: LISTA DE CHATS
+   ========================================= */
+
+.chat-sidebar-list {
+    width: 320px;
+    border-right: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-list {
+    flex: 1;
+    overflow-y: auto; /* SCROLL INDEPENDIENTE AQUÍ */
+}
+
+.chat-item {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f9f9f9;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chat-item:hover {
+    background-color: #fcfcfc;
+}
+
+.chat-item.active {
+    background-color: #fed107; /* El amarillo de DMN Fitness */
+}
+
+.chat-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-name { 
+    font-family: 'Montserrat', sans-serif; 
+    font-weight: 700; 
+    font-size: 14px; 
+    color: #1a1a1a;
+}
+
+.chat-time { 
+    font-size: 11px; 
+    color: #666; 
+}
+
+.chat-role { 
+    font-size: 12px; 
+    color: #888; 
+    display: block; 
+    margin-bottom: 8px; 
+}
+
+.chat-preview { 
+    font-size: 13px; 
+    color: #444; 
+    margin: 0; 
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es largo */
+}
+
+/* =========================================
+   COLUMNA DERECHA: VENTANA DE MENSAJES
+   ========================================= */
+
+.chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+}
+
+.messages-display {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto; /* SCROLL INDEPENDIENTE AQUÍ */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #ffffff;
+}
+
+.msg-row { 
+    display: flex; 
+    width: 100%; 
+}
+
+.msg-row.sent { 
+    justify-content: flex-end; 
+}
+
+.msg-row.received { 
+    justify-content: flex-start; 
+}
+
+.msg-bubble {
+    max-width: 75%;
+    padding: 12px 18px;
+    border-radius: 18px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.sent .msg-bubble { 
+    background-color: #fed107; 
+    color: #1a1a1a;
+    border-bottom-right-radius: 2px; 
+}
+
+.received .msg-bubble { 
+    background-color: #f1f1f1; 
+    color: #1a1a1a;
+    border-bottom-left-radius: 2px; 
+}
+
+.msg-time {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 4px;
+    color: #666;
+}
+
+.sent .msg-time {
+    text-align: right;
+}
+
+/* =========================================
+   INPUT INFERIOR (ESTÁTICO)
+   ========================================= */
+
+.chat-input-container {
+    padding: 15px 25px;
+    border-top: 1px solid #eee;
+    background: #fff;
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0; /* Evita que el área de escritura se colapse */
+}
+
+#messageInput {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 12px 20px;
+    background: #f9f9f9;
+    outline: none;
+    font-family: inherit;
+}
+
+#sendBtn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sendBtn:hover {
+    background: #333;
+}
+
+/* =========================================
+   PERSONALIZACIÓN DE SCROLLBARS (ESTILO MODERNO)
+   ========================================= */
+
+.messages-display::-webkit-scrollbar,
+.chat-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-display::-webkit-scrollbar-thumb,
+.chat-list::-webkit-scrollbar-thumb {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.messages-display::-webkit-scrollbar-track,
+.chat-list::-webkit-scrollbar-track {
+    background: transparent;
+}

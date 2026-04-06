@@ -1,54 +1,97 @@
+/* =========================================
+   ESTRUCTURA DE LA SIDEBAR
+   ========================================= */
 #mySidebar {
     height: 100%;
     width: 200px;
     background-color: #f1f1f1;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     top: 0;
     left: 0;
     overflow-x: hidden;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+/* =========================================
+   CONTENEDOR DEL LOGO (ADAPTABLE)
+   ========================================= */
+.sidebar-logo {
+    width: 100%;
+    /* Eliminamos el padding excesivo para que el logo gane tamaño */
+    padding: 10px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.sidebar-logo a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .sidebar-logo img {
-    height: 200px;
-    width: auto;
+    /* Esto hace que se adapte al ancho de la sidebar (200px) */
+    width: 90%;
+    height: auto;
+    /* Mantiene la proporción para que no se deforme */
+
+    /* Quitamos el height: 200px que tenías antes para eliminar el hueco */
     object-fit: contain;
-    margin-left: -20px;
-    margin-top: -20px;
+
+    /* Si el logo es muy vertical, esto evita que se haga gigante */
+    max-height: 160px;
+
+    margin: 0;
 }
 
+/* =========================================
+   NAVEGACIÓN
+   ========================================= */
 .sidebar-nav {
-    margin-top: 20px;
+    /* Ajustamos el margen superior para que el menú empiece 
+       justo donde termina la imagen del logo */
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .sidebar-link {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    font-family: sans-serif;
+    gap: 12px;
+    padding: 14px 20px;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     text-decoration: none;
-    color: black;
-    transition: background-color 0.2s, color 0.2s;
+    color: #333;
+    transition: all 0.2s ease;
 }
 
 .sidebar-link img {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
 }
 
+/* ESTADOS */
 .sidebar-link:hover {
-    background-color: #e0e0e0;
-    color: #000;
+    background-color: #e8e8e8;
 }
 
 .sidebar-link.active {
-    background-color: #d0d0d0;
-    color: #007bff;
+    background-color: #fed107;
+    /* Amarillo DMN */
+    color: #1a1a1a;
+}
+
+.sidebar-link.active img {
+    opacity: 1;
 }

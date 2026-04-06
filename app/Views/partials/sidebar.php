@@ -1,8 +1,5 @@
 <?php
-// Obtener la ruta actual
-$current_uri = service('uri')->getPath(); // ej: 'routines', 'chats', etc.
-
-
+$current_uri = trim(service('uri')->getPath(), '/'); 
 $sidebar_links = [
     ['href' => '/routines', 'icon' => 'rutina.svg', 'text' => 'Rutinas'],
     ['href' => '/chats',    'icon' => 'chats.svg',   'text' => 'Chats'],
@@ -11,23 +8,24 @@ $sidebar_links = [
     ['href' => '/soporte',  'icon' => 'help.svg',    'text' => 'Soporte'],
 ];
 ?>
-
 <div id="mySidebar">
     
     <div class="sidebar-logo">
-        <a href="<?= base_url('/') ?>">
+        <a href="<?= base_url('/home') ?>">
             <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo de gimnasio DMN Fitness">
         </a>
     </div>
 
-
-    <nav class="sidebar-nav">
-        <?php foreach ($sidebar_links as $link){ ?>
-            <a href="<?= base_url($link['href']) ?>" 
-               class="sidebar-link <?= ($current_uri == ltrim($link['href'], '/')) ? 'active' : '' ?>">
-                <img src="<?= base_url('assets/img/icons/' . $link['icon']) ?>" alt="">
-                <?= $link['text'] ?>
-            </a>
-        <?php } ?>
-    </nav>
+<nav class="sidebar-nav">
+    <?php foreach ($sidebar_links as $link){ 
+        // Limpiamos también el href del array para comparar "peras con peras"
+        $link_path = trim($link['href'], '/');
+        $active_class = ($current_uri == $link_path) ? 'active' : '';
+    ?>
+        <a href="<?= base_url($link['href']) ?>" class="sidebar-link <?= $active_class ?>">
+            <img src="<?= base_url('assets/img/icons/' . $link['icon']) ?>" alt="">
+            <?= $link['text'] ?>
+        </a>
+    <?php } ?>
+</nav>
 </div>

@@ -27,6 +27,6 @@ if(!session()->get('isLoggedIn')){
     $routes->get('/home', 'UserController::index');
     $routes->get('/routines', 'UserController::routine');
     $routes->get('/create-routine', 'UserController::createRoutine'); // <-- Editar esta ruta
-    $routes->get('/chats' , 'UserController::chats');
+    $routes->get('/chats' , 'Chats::chats');
 } else
     return redirect()->to('/');
