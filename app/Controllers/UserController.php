@@ -19,4 +19,8 @@ class UserController extends BaseController
     {
         return view('users/routine/routine_new');
     }
+
+    public function chats(){
+        return view('users/chats/chats');
+    }
 }

@@ -22,7 +22,11 @@ $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');
 
 // Usuarios
-
-$routes->get('/home', 'UserController::index');
-$routes->get('/routines', 'UserController::routine');
-$routes->get('/create-routine', 'UserController::createRoutine'); // <-- Editar esta ruta
+$session = session();
+if(!session()->get('isLoggedIn')){
+    $routes->get('/home', 'UserController::index');
+    $routes->get('/routines', 'UserController::routine');
+    $routes->get('/create-routine', 'UserController::createRoutine'); // <-- Editar esta ruta
+    $routes->get('/chats' , 'UserController::chats');
+} else
+    return redirect()->to('/');
