@@ -1,0 +1,60 @@
+{
+  "nombre_bot": "DMN_Support",
+  "idioma": "es",
+  "version": "1.0",
+  "intenciones": [
+    {
+      "tag": "saludo",
+      "patrones": [
+        "Hola",
+        "Buenos días",
+        "Buenas tardes",
+        "Buenas noches",
+        "Hola, ¿qué tal?",
+        "Buenos dias"
+      ],
+      "respuestas": [
+        "¡Hola! ¿En qué puedo ayudarte?",
+        "¡Buenos días! ¿Qué necesitas hoy?",
+        "¡Hola! Estoy aquí para ayudarte."
+      ]
+    },
+    {
+      "tag": "horario",
+      "patrones": [
+        "¿Cuál es el horario?",
+        "¿A qué hora abren?",
+        "¿A qué hora cierran?",
+        "Horario de atención"
+      ],
+      "respuestas": [
+        "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00.",
+        "Atendemos de lunes a viernes en horario laboral de 9:00 a 18:00."
+      ]
+    },
+    {
+      "tag": "precios",
+      "patrones": [
+        "¿Cuánto cuesta?",
+        "Precio del producto",
+        "¿Qué precio tiene?",
+        "Información sobre precios"
+      ],
+      "respuestas": [
+        "La mensualidad Básica es de 20€/mes y la Premium 30€/mes, los precios de los productos los puedes consultar en la tienda."
+      ]
+    },
+    {
+      "tag": "contacto",
+      "patrones": [
+        "Quiero hablar con un humano",
+        "Atención al cliente",
+        "Soporte técnico",
+        "Hablar con un agente"
+      ],
+      "respuestas": [
+        "Para contactar con soporte, inicia sesión con tu cuenta, y en el menú lateral, situado a la izquierda, haga click en la opción de soporte. "
+      ]
+    }
+  ]
+}
