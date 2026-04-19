@@ -22,11 +22,9 @@ $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');
 
 // Usuarios
-$session = session();
-if(!session()->get('isLoggedIn')){
-    $routes->get('/home', 'UserController::index');
-    $routes->get('/routines', 'UserController::routine');
-    $routes->get('/create-routine', 'UserController::createRoutine'); // <-- Editar esta ruta
-    $routes->get('/chats' , 'Chats::chats');
-} else
-    return redirect()->to('/');
+$routes->group('', ['filter' => 'auth'], function($routes) {
+    $routes->get('home', 'UserController::index');
+    $routes->get('routines', 'UserController::routine');
+    $routes->get('create-routine', 'UserController::createRoutine');
+    $routes->get('chats' , 'Chats::chats');
+});

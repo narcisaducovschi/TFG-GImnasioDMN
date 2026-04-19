@@ -65,7 +65,7 @@ class Auth extends BaseController
             'user_id' => $user['id'],
             'email' => $user['email'],
             'nombre' => $user['nombre'],
-            'rol' => $user['id_rol'],
+            'id_rol' => (int)$user['id_rol'],
             'isLoggedIn' => true
         ]);
 
