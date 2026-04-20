@@ -28,3 +28,7 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
     $routes->get('create-routine', 'UserController::createRoutine');
     $routes->get('chats' , 'Chats::chats');
 });
+
+$routes->group('admin', ['filter' => 'admin'], function($routes) {
+    $routes->get('setTask', 'Admin::getTrabajadores');
+});
