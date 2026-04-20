@@ -1,13 +1,15 @@
 <?php
 
 // 1. - Administrador 2. - Trabajador 3. - Profesor 4. - Soporte 5. - Usuario.
+// Los que están en grupo en rutas hay que meterles el grupo
+// delante del href. 
 $session = session();
 $role = (int)$session->get('id_rol');
 $sidebar_links = [];
 switch ($role) {
     case 1:
         $sidebar_links = [
-            ['href' => '/setTask', 'icon' => 'tasks.svg', 'text' => 'Asiganar tareas'],
+            ['href' => 'admin/setTask', 'icon' => 'tasks.svg', 'text' => 'Asiganar tareas'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => '/clasesAdmin',   'icon' => 'calendar.svg', 'text' => 'Gestionar clases'],
             ['href' => '/usersAdmin',   'icon' => 'user.svg',   'text' => 'Gestionar Usuarios'],
