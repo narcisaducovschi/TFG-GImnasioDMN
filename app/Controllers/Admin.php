@@ -71,25 +71,34 @@ class Admin extends BaseController
         return view('admin/editUser', $data);
     }
 
-    public function updateUser($id)
+public function updateUser($id)
 {
     $userModel = new \App\Models\UserModel();
 
-    $user = $userModel->find($id);
-    if (!$user) {
-        return redirect()->to('/admin/usersAdmin')->with('error', 'El usuario no existe.');
+    $validationRules = [
+        'nombre'    => 'required|min_length[3]|max_length[50]',
+        'apellidos' => 'required|min_length[3]|max_length[50]',
+        'email'     => "required|valid_email|is_unique[usuarios.email,id,{$id}]",
+        'id_rol'    => 'required|is_natural_no_zero',
+        'id_suscripcion' => 'required|is_natural_no_zero'
+    ];
+
+    if (!$this->validate($validationRules)) {
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
     $data = [
-        'nombre'          => $this->request->getPost('nombre'),
-        'apellidos'       => $this->request->getPost('apellidos'),
-        'email'           => $this->request->getPost('email'),
-        'id_rol'          => (int)$this->request->getPost('id_rol'),
-        'id_suscripcion'  => (int)$this->request->getPost('id_suscripcion'),
+        'nombre'         => $this->request->getPost('nombre'),
+        'apellidos'      => $this->request->getPost('apellidos'),
+        'email'          => $this->request->getPost('email'),
+        'id_rol'         => (int)$this->request->getPost('id_rol'),
+        'id_suscripcion' => (int)$this->request->getPost('id_suscripcion'),
     ];
 
     if ($userModel->update($id, $data)) {
-        return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario actualizado con éxito.');
+        return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario actualizado correctamente.');
+    } else {
+        return redirect()->back()->with('error', 'No se pudieron guardar los cambios.');
     }
 }
 }

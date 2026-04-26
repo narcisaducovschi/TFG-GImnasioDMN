@@ -127,22 +127,32 @@
             <h2>Editar Usuario</h2>
             <p class="subtitle">Modifica los datos de acceso, el rol o el nivel de suscripción del socio.</p>
 
+            <?php if (session()->getFlashdata('errors')) : ?>
+                <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ffeeba; font-size: 14px;">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <?php foreach (session()->getFlashdata('errors') as $error) : ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
             <form action="<?= base_url('admin/updateUser/' . $user['id']) ?>" method="POST">
                 <?= csrf_field() ?>
 
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?= esc($user['nombre']) ?>" required>
+                    <input type="text" name="nombre" id="nombre" value="<?= old('nombre', esc($user['nombre'])) ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos" value="<?= esc($user['apellidos']) ?>" required>
+                    <input type="text" name="apellidos" id="apellidos" value="<?= old('apellidos', esc($user['apellidos'])) ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" name="email" id="email" value="<?= esc($user['email']) ?>" required>
+                    <input type="email" name="email" id="email" value="<?= old('email', esc($user['email'])) ?>" required>
                 </div>
 
                 <div class="form-group">
@@ -151,7 +161,8 @@
                         <?php 
                         $roles = [1 => 'Administrador', 2 => 'Trabajador', 3 => 'Profesor', 4 => 'Soporte', 5 => 'Socio'];
                         foreach ($roles as $id => $label): ?>
-                            <option value="<?= $id ?>" <?= ($user['id_rol'] == $id) ? 'selected' : '' ?>>
+                            <?php $selected = (old('id_rol', $user['id_rol']) == $id) ? 'selected' : ''; ?>
+                            <option value="<?= $id ?>" <?= $selected ?>>
                                 <?= $label ?>
                             </option>
                         <?php endforeach; ?>
@@ -164,7 +175,8 @@
                         <?php 
                         $suscripciones = [1 => 'None', 2 => 'Básico', 3 => 'Premium'];
                         foreach ($suscripciones as $id => $label): ?>
-                            <option value="<?= $id ?>" <?= ($user['id_suscripcion'] == $id) ? 'selected' : '' ?>>
+                            <?php $selected = (old('id_suscripcion', $user['id_suscripcion']) == $id) ? 'selected' : ''; ?>
+                            <option value="<?= $id ?>" <?= $selected ?>>
                                 <?= $label ?>
                             </option>
                         <?php endforeach; ?>
@@ -172,7 +184,7 @@
                 </div>
 
                 <div class="btn-container">
-                    <a href="<?= base_url('admin/usersAdmin') ?>" class="btn-cancel button">Cancelar</a>
+                    <a href="<?= base_url('admin/usersAdmin') ?>" class="btn-cancel">Cancelar</a>
                     <button type="submit">Guardar Cambios</button>
                 </div>
             </form>
