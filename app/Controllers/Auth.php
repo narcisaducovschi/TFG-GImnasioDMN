@@ -46,31 +46,53 @@ class Auth extends BaseController
         return view('auth/payment');
     }
 
-    public function processLogin()
-    {
+public function processLogin()
+{
+    $email = $this->request->getPost('email');
+    $password = $this->request->getPost('password');
 
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+    $userModel = new \App\Models\UserModel();
+    $user = $userModel->where('email', $email)->first();
 
-        $userModel = new \App\Models\UserModel();
-        $user = $userModel->where('email', $email)->first();
-
-        if (!$user)
-            return redirect()->to('/login')->with('error', 'El usuario no existe');
-        if (!password_verify($password, $user['password']))
-            return redirect()->to('/login')->with('error', 'La contraseña es incorrecta');
-
-        $session = session();
-        $session->set([
-            'user_id' => $user['id'],
-            'email' => $user['email'],
-            'nombre' => $user['nombre'],
-            'id_rol' => (int)$user['id_rol'],
-            'isLoggedIn' => true
-        ]);
-
-        return redirect()->to('/home');
+    if (!$user) {
+        return redirect()->to('/login')->with('error', 'El usuario no existe');
     }
+    
+    if (!password_verify($password, $user['password'])) {
+        return redirect()->to('/login')->with('error', 'La contraseña es incorrecta');
+    }
+
+    $session = session();
+    $rolId = (int)$user['id_rol'];
+
+    $session->set([
+        'user_id'    => $user['id'],
+        'email'      => $user['email'],
+        'nombre'     => $user['nombre'],
+        'id_rol'     => $rolId,
+        'isLoggedIn' => true
+    ]);
+
+    switch ($rolId) {
+        case 1: // Admin: Gestionar usuarios
+            return redirect()->to('/admin/usersAdmin');
+
+        case 2: // Trabajador: Tareas asignadas
+            return redirect()->to('/worker/myTasks');
+
+        case 3: // Profesor: Ver sus clases
+            return redirect()->to('/teacher/myClasses');
+
+        case 4: // Support: Atención al cliente
+            return redirect()->to('/support/tickets');
+
+        case 5: // Socios
+            return redirect()->to('/home');
+
+        default:
+            return redirect()->to('/');
+    }
+}
 
     public function logout()
     {

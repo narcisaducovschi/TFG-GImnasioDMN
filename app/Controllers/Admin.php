@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use App\Models\TareaModel; // Asegúrate de crear este modelo
+use App\Models\TareaModel;
 
 class Admin extends BaseController
 {
