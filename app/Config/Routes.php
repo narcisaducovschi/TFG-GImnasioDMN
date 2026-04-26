@@ -22,17 +22,20 @@ $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');
 
 // Usuarios
-$routes->group('', ['filter' => 'auth'], function($routes) {
+$routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('home', 'UserController::index');
     $routes->get('routines', 'UserController::routine');
     $routes->get('create-routine', 'UserController::createRoutine');
-    $routes->get('chats' , 'Chats::chats');
+    $routes->get('chats', 'Chats::chats');
 });
 
-$routes->group('admin', ['filter' => 'admin'], function($routes) {
+$routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('setTask', 'Admin::getTrabajadores');
     $routes->post('saveTask', 'Admin::saveTask');
     $routes->get('usersAdmin', 'Admin::getUsers');
     $routes->get('editUser/(:num)', 'Admin::editUser/$1');
     $routes->post('updateUser/(:num)', 'Admin::updateUser/$1');
+    $routes->get('clasesAdmin', 'Admin::getClases');
+    $routes->get('createClase', 'Admin::createClase');
+    $routes->post('saveClase', 'Admin::saveClase');
 });

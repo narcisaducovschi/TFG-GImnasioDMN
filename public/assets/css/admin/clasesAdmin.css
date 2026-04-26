@@ -1,0 +1,87 @@
+     :root {
+         --primary: #fed107;
+         --bg-light: #f4f7f6;
+         --white: #ffffff;
+         --border-color: #e0e0e0;
+     }
+
+     body {
+         background-color: var(--bg-light);
+         margin: 0;
+         font-family: 'Arial', sans-serif;
+     }
+
+     .wrapper {
+         margin-left: 200px;
+         padding: 40px;
+     }
+
+     .header-section {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 30px;
+     }
+
+     h2 {
+         font-family: 'Montserrat', sans-serif;
+         font-weight: 800;
+         border-left: 5px solid var(--primary);
+         padding-left: 15px;
+     }
+
+     .btn-add {
+         background-color: var(--primary);
+         color: #1a1a1a;
+         padding: 12px 20px;
+         border-radius: 8px;
+         text-decoration: none;
+         font-weight: 700;
+     }
+
+     .table-container {
+         background: var(--white);
+         padding: 20px;
+         border-radius: 15px;
+         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+     }
+
+     table {
+         width: 100%;
+         border-collapse: collapse;
+     }
+
+     th {
+         text-align: left;
+         padding: 15px;
+         color: #7e7c7c;
+         border-bottom: 2px solid var(--border-color);
+         font-size: 13px;
+         text-transform: uppercase;
+     }
+
+     td {
+         padding: 15px;
+         border-bottom: 1px solid var(--border-color);
+     }
+
+     .actions {
+         display: flex;
+         gap: 10px;
+     }
+
+     .btn-edit {
+         background-color: #e3f2fd;
+         color: #3498db;
+         padding: 8px;
+         border-radius: 6px;
+     }
+
+     .btn-delete {
+         background-color: #ffebee;
+         color: #e74c3c;
+         padding: 8px;
+         border-radius: 6px;
+         border: none;
+         cursor: pointer;
+     }

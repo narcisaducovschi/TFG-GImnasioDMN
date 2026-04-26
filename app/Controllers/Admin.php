@@ -34,6 +34,7 @@ class Admin extends BaseController
         return redirect()->to('admin/setTask')->with('success', 'Tarea asignada correctamente');
     }
 
+    // Gestion de usuarios
     public function getUsers()
     {
         $userModel = new UserModel();
@@ -63,7 +64,7 @@ class Admin extends BaseController
             ],
             'suscripciones' => [
                 1 => 'Trabajador',
-                2 => 'Básica' , 
+                2 => 'Básica',
                 3 => 'Premium'
             ]
         ];
@@ -71,34 +72,107 @@ class Admin extends BaseController
         return view('admin/editUser', $data);
     }
 
-public function updateUser($id)
+    public function updateUser($id)
+    {
+        $userModel = new \App\Models\UserModel();
+
+        $validationRules = [
+            'nombre'    => 'required|min_length[3]|max_length[50]',
+            'apellidos' => 'required|min_length[3]|max_length[50]',
+            'email'     => "required|valid_email|is_unique[usuarios.email,id,{$id}]",
+            'id_rol'    => 'required|is_natural_no_zero',
+            'id_suscripcion' => 'required|is_natural_no_zero'
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $data = [
+            'nombre'         => $this->request->getPost('nombre'),
+            'apellidos'      => $this->request->getPost('apellidos'),
+            'email'          => $this->request->getPost('email'),
+            'id_rol'         => (int)$this->request->getPost('id_rol'),
+            'id_suscripcion' => (int)$this->request->getPost('id_suscripcion'),
+        ];
+
+        if ($userModel->update($id, $data)) {
+            return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario actualizado correctamente.');
+        } else {
+            return redirect()->back()->with('error', 'No se pudieron guardar los cambios.');
+        }
+    }
+
+    // Gestion de clases
+
+    public function getClases()
+    {
+        $claseModel = new  \App\Models\ClaseModel();
+
+        $data['clases'] = $claseModel->getClasesFull();
+
+        return view('admin/clasesAdmin', $data);
+    }
+
+    public function editClase($id)
+    {
+        $claseModel = new \App\Models\ClaseModel();
+        $userModel = new \App\Models\UserModel();
+
+        $clase = $claseModel->find($id);
+        if (!$clase) {
+            return redirect()->to('admin/clasesAdmin')->with('error', 'Clase no encontrada.');
+        }
+
+        $data = [
+            'clase' => $clase,
+            'profesores' => $userModel->where('id_rol', 3)->findAll(),
+        ];
+
+        return view('admin/editClase', $data);
+    }
+
+    public function createClase()
 {
     $userModel = new \App\Models\UserModel();
+    
+    // Obtenemos solo a los profesores para el desplegable
+    $data['profesores'] = $userModel->where('id_rol', 3)->findAll();
 
+    return view('admin/createClase', $data);
+}
+
+public function saveClase()
+{
+    $claseModel = new \App\Models\ClaseModel();
+
+    // 1. Validar datos y el archivo de imagen
     $validationRules = [
-        'nombre'    => 'required|min_length[3]|max_length[50]',
-        'apellidos' => 'required|min_length[3]|max_length[50]',
-        'email'     => "required|valid_email|is_unique[usuarios.email,id,{$id}]",
-        'id_rol'    => 'required|is_natural_no_zero',
-        'id_suscripcion' => 'required|is_natural_no_zero'
+        'nombre'      => 'required|min_length[3]',
+        'id_profesor' => 'required|is_natural_no_zero',
+        'fecha'       => 'required|valid_date',
+        'hora'        => 'required',
+        'imagen'      => 'uploaded[imagen]|max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png]'
     ];
 
     if (!$this->validate($validationRules)) {
         return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
-    $data = [
-        'nombre'         => $this->request->getPost('nombre'),
-        'apellidos'      => $this->request->getPost('apellidos'),
-        'email'          => $this->request->getPost('email'),
-        'id_rol'         => (int)$this->request->getPost('id_rol'),
-        'id_suscripcion' => (int)$this->request->getPost('id_suscripcion'),
-    ];
+    $img = $this->request->getFile('imagen');
+    $newName = $img->getRandomName();
+    
+    // Mover a la carpeta public/uploads/clases
+    $img->move(FCPATH . 'uploads/clases', $newName);
 
-    if ($userModel->update($id, $data)) {
-        return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario actualizado correctamente.');
-    } else {
-        return redirect()->back()->with('error', 'No se pudieron guardar los cambios.');
-    }
+    $claseModel->insert([
+        'nombre'      => $this->request->getPost('nombre'),
+        'id_profesor' => $this->request->getPost('id_profesor'),
+        'fecha'       => $this->request->getPost('fecha'),
+        'hora'        => $this->request->getPost('hora'),
+        'imagen'      => $newName
+    ]);
+
+    return redirect()->to('admin/clasesAdmin')->with('success', 'Clase creada correctamente.');
 }
 }

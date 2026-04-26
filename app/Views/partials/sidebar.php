@@ -11,7 +11,7 @@ switch ($role) {
         $sidebar_links = [
             ['href' => 'admin/setTask', 'icon' => 'tasks.svg', 'text' => 'Asiganar tareas'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
-            ['href' => '/clasesAdmin',   'icon' => 'calendar.svg', 'text' => 'Gestionar clases'],
+            ['href' => 'admin/clasesAdmin',   'icon' => 'calendar.svg', 'text' => 'Gestionar clases'],
             ['href' => 'admin/usersAdmin',   'icon' => 'user.svg',   'text' => 'Gestionar Usuarios'],
             ['href' => '/soporte',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];
