@@ -11,12 +11,12 @@ class Admin extends BaseController
     {
         $userModel = new UserModel();
         $data['trabajadores'] = $userModel->where('id_rol', 2)->findAll();
-        
+
         return view('admin/setTask', $data);
     }
     public function saveTask()
     {
-        
+
         $idUsuario   = $this->request->getPost('id_usuario');
         $descripcion = $this->request->getPost('descripcion');
         $fecha       = $this->request->getPost('fecha_ejecucion');
@@ -32,5 +32,13 @@ class Admin extends BaseController
             'fecha_ejecucion' => $fecha
         ]);
         return redirect()->to('admin/setTask')->with('success', 'Tarea asignada correctamente');
+    }
+
+    public function getUsers()
+    {
+        $userModel = new UserModel();
+        $data['usuarios'] = $userModel->findAll();
+
+        return view('admin/usersAdmin', $data);
     }
 }
