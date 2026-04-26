@@ -33,4 +33,6 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('setTask', 'Admin::getTrabajadores');
     $routes->post('saveTask', 'Admin::saveTask');
     $routes->get('usersAdmin', 'Admin::getUsers');
+    $routes->get('editUser/(:num)', 'Admin::editUser/$1');
+    $routes->post('updateUser/(:num)', 'Admin::updateUser/$1');
 });

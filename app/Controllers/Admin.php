@@ -41,4 +41,55 @@ class Admin extends BaseController
 
         return view('admin/usersAdmin', $data);
     }
+
+    public function editUser($id)
+    {
+        $userModel = new \App\Models\UserModel();
+
+        $user = $userModel->find($id);
+
+        if (!$user) {
+            return redirect()->to('/admin/usersAdmin')->with('error', 'Usuario no encontrado.');
+        }
+
+        $data = [
+            'user' => $user,
+            'roles' => [
+                1 => 'Administrador',
+                2 => 'Trabajador',
+                3 => 'Profesor',
+                4 => 'Soporte',
+                5 => 'Socio'
+            ],
+            'suscripciones' => [
+                1 => 'Trabajador',
+                2 => 'Básica' , 
+                3 => 'Premium'
+            ]
+        ];
+
+        return view('admin/editUser', $data);
+    }
+
+    public function updateUser($id)
+{
+    $userModel = new \App\Models\UserModel();
+
+    $user = $userModel->find($id);
+    if (!$user) {
+        return redirect()->to('/admin/usersAdmin')->with('error', 'El usuario no existe.');
+    }
+
+    $data = [
+        'nombre'          => $this->request->getPost('nombre'),
+        'apellidos'       => $this->request->getPost('apellidos'),
+        'email'           => $this->request->getPost('email'),
+        'id_rol'          => (int)$this->request->getPost('id_rol'),
+        'id_suscripcion'  => (int)$this->request->getPost('id_suscripcion'),
+    ];
+
+    if ($userModel->update($id, $data)) {
+        return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario actualizado con éxito.');
+    }
+}
 }

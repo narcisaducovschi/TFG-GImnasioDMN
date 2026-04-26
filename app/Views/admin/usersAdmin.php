@@ -19,6 +19,18 @@
             </a>
         </div>
 
+        <?php if (session()->getFlashdata('success')) { ?>
+            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: Montserrat; font-weight: 600; border: 1px solid #c3e6cb;">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php } ?>
+
+        <?php if (session()->getFlashdata('error')) { ?>
+            <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-family: Montserrat; font-weight: 600; border: 1px solid #f5c6cb;">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php } ?>
+
         <div class="table-container">
             <table>
                 <thead>
