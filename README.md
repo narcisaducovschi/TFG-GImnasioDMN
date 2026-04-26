@@ -30,3 +30,14 @@ Gimnasio-TFG/
 ├── spark
 └── README.md
 ```
+
+## 🧑‍💻 Cuentas para probar
+
+| Rol          | Email                | Contraseña     |
+|--------------|---------------------|----------------|
+| Administrador| admin@example.com   | adminadmin     |
+| Trabajador   | worker@example.com  | workerworker   |
+| Profesor     | teacher@example.com | teacherteacher |
+| Soporte      | support@example.com | supportsupport |
+| Usuario      | user@example.com    | useruser       |
+
