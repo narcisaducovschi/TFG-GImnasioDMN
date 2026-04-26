@@ -38,4 +38,6 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('clasesAdmin', 'Admin::getClases');
     $routes->get('createClase', 'Admin::createClase');
     $routes->post('saveClase', 'Admin::saveClase');
+    $routes->get('createUser', 'Admin::createUser');
+    $routes->post('saveUser', 'Admin::saveUser');
 });
