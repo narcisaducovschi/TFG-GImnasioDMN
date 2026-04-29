@@ -91,6 +91,10 @@
         </div>
     </div>
 
+    <div class="pagination-wrapper">
+        <?= $pager->links() ?>
+    </div>
+
     <?= $this->include('partials/scripts') ?>
 </body>
 

@@ -159,6 +159,58 @@ td {
     color: #f9a825;
 }
 
+/* Contenedor principal */
+.pagination-wrapper {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Lista de CodeIgniter */
+.pagination-wrapper ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 5px;
+}
+
+/* Botones individuales */
+.pagination-wrapper li a, 
+.pagination-wrapper li span {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Estado Hover */
+.pagination-wrapper li a:hover {
+    background: #f8f9fa;
+    border-color: #ddd;
+    transform: translateY(-1px);
+}
+
+/* Página Activa */
+.pagination-wrapper li.active span {
+    background: #2ecc71; /* Verde esmeralda como tus suscripciones */
+    color: white;
+    border-color: #2ecc71;
+}
+
+/* Botones deshabilitados */
+.pagination-wrapper li.disabled span {
+    color: #ccc;
+    background: #fdfdfd;
+    cursor: not-allowed;
+}
+
 
 @media (max-width: 768px) {
     .wrapper {

@@ -37,8 +37,12 @@ class Admin extends BaseController
     // Gestion de usuarios
     public function getUsers()
     {
-        $userModel = new UserModel();
-        $data['usuarios'] = $userModel->findAll();
+        $userModel = new \App\Models\UserModel();
+
+        $data = [
+            'usuarios' => $userModel->paginate(10),
+            'pager'    => $userModel->pager
+        ];
 
         return view('admin/usersAdmin', $data);
     }
@@ -155,6 +159,18 @@ class Admin extends BaseController
         } else {
             return redirect()->back()->with('error', 'Ocurrió un error al crear el usuario.');
         }
+    }
+
+    public function deleteUser($id)
+    {
+        $userModel = new \App\Models\UserModel();
+
+        if ($userModel->find($id)) {
+            $userModel->delete($id);
+            return redirect()->to('/admin/usersAdmin')->with('success', 'Usuario eliminado correctamente.');
+        }
+
+        return redirect()->to('/admin/usersAdmin')->with('error', 'El usuario no existe o ya fue eliminado.');
     }
 
     // Gestion de clases
