@@ -3,25 +3,27 @@
    ========================================= */
 
 #main-content {
-    margin-left: 200px; /* Ancho de tu sidebar para evitar solapamiento */
+    margin-left: 200px; 
+    width: calc(100% - 200px); 
     height: 100vh;      
-    padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #f0f2f5; 
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    padding: 20px;
+    overflow: hidden;
 }
 
 .chat-container {
     display: flex;
     width: 100%;
-    max-width: 1200px;
-    height: 85vh; /* Altura fija del widget de chat */
+    max-width: 1300px; 
+    height: 90vh; 
     background: #fff;
-    border-radius: 15px;
-    overflow: hidden; /* Corta el contenido sobrante para forzar scroll interno */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden; /* Encapsula los scrolls internos */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 /* =========================================
@@ -29,23 +31,39 @@
    ========================================= */
 
 .chat-sidebar-list {
-    width: 320px;
-    border-right: 1px solid #eee;
+    width: 350px; 
+    border-right: 1px solid #eef0f2;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Organiza cabecera y lista */
     height: 100%;
+    background: #fff;
+    flex-shrink: 0;
+    overflow: hidden; /* IMPORTANTE: No permite scroll aquí */
+}
+
+/* Contenedor del botón superior */
+.chat-sidebar-list > div:first-child {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+    flex-shrink: 0; /* No se encoge, mantiene su tamaño */
 }
 
 .chat-list {
-    flex: 1;
-    overflow-y: auto; /* SCROLL INDEPENDIENTE AQUÍ */
+    flex: 1; /* Ocupa todo el espacio restante del sidebar */
+    overflow-y: auto; /* ÚNICO punto de scroll en el sidebar */
+    background: #fff;
 }
 
 .chat-item {
     padding: 15px 20px;
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid #f8f9fa;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-decoration: none !important;
 }
 
 .chat-item:hover {
@@ -53,13 +71,16 @@
 }
 
 .chat-item.active {
-    background-color: #fed107; /* El amarillo de DMN Fitness */
+    background-color: #fff9db; 
+    border-left: 4px solid #fed107; 
+    padding-left: 16px; 
 }
 
 .chat-item-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .chat-name { 
@@ -67,28 +88,38 @@
     font-weight: 700; 
     font-size: 14px; 
     color: #1a1a1a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 10px;
 }
 
 .chat-time { 
     font-size: 11px; 
-    color: #666; 
+    color: #999; 
+    flex-shrink: 0;
 }
 
 .chat-role { 
-    font-size: 12px; 
-    color: #888; 
-    display: block; 
-    margin-bottom: 8px; 
+    font-size: 11px; 
+    color: #fed107; 
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
 }
 
 .chat-preview { 
     font-size: 13px; 
-    color: #444; 
+    color: #777; 
     margin: 0; 
     line-height: 1.4;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;  
     overflow: hidden;
-    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es largo */
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 /* =========================================
@@ -100,97 +131,119 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #fff;
+    background-color: #ffffff;
+    overflow: hidden;
 }
 
 .messages-display {
     flex: 1;
-    padding: 25px;
-    overflow-y: auto; /* SCROLL INDEPENDIENTE AQUÍ */
+    padding: 30px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    background-color: #ffffff;
+    gap: 8px; 
+    background-color: #f8f9fa;
 }
 
 .msg-row { 
     display: flex; 
     width: 100%; 
+    margin-bottom: 4px;
 }
 
-.msg-row.sent { 
-    justify-content: flex-end; 
-}
-
-.msg-row.received { 
-    justify-content: flex-start; 
-}
+.msg-row.sent { justify-content: flex-end; }
+.msg-row.received { justify-content: flex-start; }
 
 .msg-bubble {
-    max-width: 75%;
-    padding: 12px 18px;
-    border-radius: 18px;
-    position: relative;
+    max-width: 65%;
+    padding: 10px 15px;
+    border-radius: 15px;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.4;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .sent .msg-bubble { 
     background-color: #fed107; 
     color: #1a1a1a;
-    border-bottom-right-radius: 2px; 
+    border-top-right-radius: 2px; 
 }
 
 .received .msg-bubble { 
-    background-color: #f1f1f1; 
-    color: #1a1a1a;
-    border-bottom-left-radius: 2px; 
+    background-color: #fff; 
+    color: #2d3436;
+    border-top-left-radius: 2px;
+    border: 1px solid #e6e6e6;
 }
 
 .msg-time {
     display: block;
     font-size: 10px;
-    margin-bottom: 4px;
-    color: #666;
+    margin-top: 4px;
+    opacity: 0.7;
 }
 
-.sent .msg-time {
-    text-align: right;
-}
+.sent .msg-time { text-align: right; color: #1a1a1a; }
+.received .msg-time { text-align: left; color: #636e72; }
 
 /* =========================================
-   INPUT INFERIOR (ESTÁTICO)
+   AREA DE ENTRADA DE TEXTO
    ========================================= */
 
 .chat-input-container {
     padding: 15px 25px;
-    border-top: 1px solid #eee;
     background: #fff;
+    border-top: 1px solid #eee;
     display: flex;
-    gap: 10px;
-    flex-shrink: 0; /* Evita que el área de escritura se colapse */
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+#chatForm {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+    align-items: center;
 }
 
 #messageInput {
     flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    padding: 12px 20px;
-    background: #f9f9f9;
+    border: 1.5px solid #eef0f2;
+    border-radius: 8px;
+    padding: 12px 18px;
+    background: #f8f9fa;
     outline: none;
-    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#messageInput:focus {
+    border-color: #fed107;
+    background: #fff;
 }
 
 #sendBtn {
     background: #1a1a1a;
-    color: #fff;
+    color: #fed107;
     border: none;
-    padding: 10px 25px;
-    border-radius: 25px;
+    height: 45px;
+    min-width: 110px;
+    padding: 0 20px;
+    border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 #sendBtn:hover {
@@ -198,21 +251,23 @@
 }
 
 /* =========================================
-   PERSONALIZACIÓN DE SCROLLBARS (ESTILO MODERNO)
+   SCROLLBARS
    ========================================= */
 
 .messages-display::-webkit-scrollbar,
 .chat-list::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 
 .messages-display::-webkit-scrollbar-thumb,
 .chat-list::-webkit-scrollbar-thumb {
-    background-color: #e0e0e0;
+    background-color: #d1d8e0;
     border-radius: 10px;
 }
 
-.messages-display::-webkit-scrollbar-track,
-.chat-list::-webkit-scrollbar-track {
-    background: transparent;
+#no-chats-msg {
+    padding: 40px 20px;
+    color: #bbb;
+    text-align: center;
+    font-size: 0.9em;
 }

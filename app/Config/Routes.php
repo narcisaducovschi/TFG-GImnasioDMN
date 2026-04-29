@@ -26,7 +26,10 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('home', 'UserController::index');
     $routes->get('routines', 'UserController::routine');
     $routes->get('create-routine', 'UserController::createRoutine');
-    $routes->get('chats', 'Chats::chats');
+    $routes->get('chats', 'Chat::index');
+    $routes->get('chats/(:num)', 'Chat::index/$1');
+    $routes->post('chat/sendMessage', 'Chat::sendMessage');
+    $routes->get('chats/nuevo', 'Chat::nuevo');
 });
 
 $routes->group('admin', ['filter' => 'admin'], function ($routes) {
@@ -42,3 +45,4 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->post('saveUser', 'Admin::saveUser');
     $routes->post('deleteUser/(:num)', 'Admin::deleteUser/$1');
 });
+
