@@ -33,6 +33,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('chats/nuevo', 'Chat::nuevo');
 });
 
+// Administrador
 $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('setTask', 'Admin::getTrabajadores');
     $routes->post('saveTask', 'Admin::saveTask');
@@ -47,3 +48,7 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->post('deleteUser/(:num)', 'Admin::deleteUser/$1');
 });
 
+//Trabajador
+$routes->group('worker', ['filter' => 'worker'] , function($routes){
+    $routes->get('myTasks' , 'Worker::myTasks');
+});
