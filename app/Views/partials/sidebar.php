@@ -41,7 +41,7 @@ switch ($role) {
 
     case 5:
         $sidebar_links = [
-            ['href' => '/home', 'icon' => 'rutina.svg', 'text' => 'Home'],
+            ['href' => '/home', 'icon' => 'home.svg', 'text' => 'Home'],
             ['href' => '/routines', 'icon' => 'rutina.svg', 'text' => 'Rutinas'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => '/clases',   'icon' => 'calendar.svg', 'text' => 'Clases'],

@@ -206,7 +206,6 @@ class Admin extends BaseController
     {
         $userModel = new \App\Models\UserModel();
 
-        // Obtenemos solo a los profesores para el desplegable
         $data['profesores'] = $userModel->where('id_rol', 3)->findAll();
 
         return view('admin/createClase', $data);
@@ -216,7 +215,7 @@ class Admin extends BaseController
     {
         $claseModel = new \App\Models\ClaseModel();
 
-        // 1. Validar datos y el archivo de imagen
+
         $validationRules = [
             'nombre'      => 'required|min_length[3]',
             'id_profesor' => 'required|is_natural_no_zero',
