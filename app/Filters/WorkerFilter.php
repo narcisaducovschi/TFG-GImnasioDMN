@@ -10,12 +10,12 @@ class WorkerFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login');
+        $session = session();
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('/login')->with('error', 'Debes iniciar sesión para acceder.');
         }
-
-        if (session()->get('id_rol') != 2) {
-            return redirect()->to('/home')->with('error', 'Solo pueden acceder trabajadores.');
+        if ((int)$session->get('id_rol') !== 2) {
+            return redirect()->to('/home')->with('error', 'Acceso denegado: Esta zona es solo para trabajadores.');
         }
     }
 

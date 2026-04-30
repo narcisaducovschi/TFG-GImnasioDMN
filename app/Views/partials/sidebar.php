@@ -20,7 +20,8 @@ switch ($role) {
     case 2:
         $sidebar_links = [
             ['href' => '/users', 'icon' => 'user.svg', 'text' => 'Socios'],
-            ['href' => '/tasks',   'icon' => 'tasks.svg',   'text' => 'Tu cuenta'],
+            ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
+            ['href' => '/worker/myTasks',   'icon' => 'tasks.svg',   'text' => 'Mis tareas'],
         ];
         break;
 
@@ -34,6 +35,7 @@ switch ($role) {
     case 4:
         $sidebar_links = [
             ['href' => '/support', 'icon' => 'help.svg', 'text' => 'Tickets'],
+            ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
         ];
         break;
 

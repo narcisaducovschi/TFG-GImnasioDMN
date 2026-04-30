@@ -17,7 +17,7 @@ $routes->post('auth/processLogin', 'Auth::processLogin');
 $routes->get('/register', 'Auth::register');
 $routes->get('/payment', 'Auth::payment');
 $routes->post('auth/processRegister', 'Auth::processRegister');
-$routes->get('/logout' , 'Auth::logout');
+$routes->get('/logout', 'Auth::logout');
 
 $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');
@@ -49,6 +49,7 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
 });
 
 //Trabajador
-$routes->group('worker', ['filter' => 'worker'] , function($routes){
-    $routes->get('myTasks' , 'Worker::myTasks');
+$routes->group('worker', ['filter' => 'worker'], function ($routes) {
+    $routes->get('myTasks', 'Worker::myTasks');
+    $routes->post('completeTask/(:num)', 'Worker::completeTask/$1');
 });
