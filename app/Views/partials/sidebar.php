@@ -39,6 +39,7 @@ switch ($role) {
 
     case 5:
         $sidebar_links = [
+            ['href' => '/home', 'icon' => 'rutina.svg', 'text' => 'Home'],
             ['href' => '/routines', 'icon' => 'rutina.svg', 'text' => 'Rutinas'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => '/clases',   'icon' => 'calendar.svg', 'text' => 'Clases'],
@@ -56,7 +57,7 @@ switch ($role) {
 <div id="mySidebar">
 
     <div class="sidebar-logo">
-        <a href="<?= base_url('/home') ?>">
+        <a href="<?= base_url('/') ?>">
             <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo de gimnasio DMN Fitness">
         </a>
     </div>

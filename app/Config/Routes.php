@@ -17,6 +17,7 @@ $routes->post('auth/processLogin', 'Auth::processLogin');
 $routes->get('/register', 'Auth::register');
 $routes->get('/payment', 'Auth::payment');
 $routes->post('auth/processRegister', 'Auth::processRegister');
+$routes->get('/logout' , 'Auth::logout');
 
 $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');

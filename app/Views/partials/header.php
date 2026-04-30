@@ -52,13 +52,16 @@
     </div>
 
     <div class="header-links">
-        <?php
-        if(uri_string() !== 'shop'){
-        ?>
-        <a href="/shop" class="header-btn">Tienda</a>
-        <?php };?>
-        <a href="/login" class="header-btn">Iniciar Sesión</a>
-        <a href="/register" class="header-btn">Registrarse</a>
+        <?php if (uri_string() !== 'shop'): ?>
+            <a href="/shop" class="header-btn">Tienda</a>
+        <?php endif; ?>
+
+        <?php if (session()->get('isLoggedIn')): ?>
+            <a href="<?= base_url('logout') ?>" class="header-btn" style="background-color: #ff4d4d; color: white;">Cerrar Sesión</a>
+        <?php else: ?>
+            <a href="/login" class="header-btn">Iniciar Sesión</a>
+            <a href="/register" class="header-btn">Registrarse</a>
+        <?php endif; ?>
     </div>
 
 </header>
