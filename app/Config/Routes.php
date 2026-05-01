@@ -25,8 +25,13 @@ $routes->get('/search', 'ShopController::buscar');
 // Usuarios
 $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('home', 'UserController::index');
-    $routes->get('routines', 'UserController::routine');
-    $routes->get('create-routine', 'UserController::createRoutine');
+    $routes->get('routine', 'UserController::routine');
+    // Rutinas
+    $routes->get('routine/new', 'UserController::createRoutine');
+    $routes->post('routine/store', 'UserController::storeExercise');
+    $routes->get('routine/edit/(:num)', 'UserController::editExercise/$1');
+    $routes->post('routine/update/(:num)', 'UserController::updateExercise/$1');
+    // Chatas
     $routes->get('chats', 'Chat::index');
     $routes->get('chats/(:num)', 'Chat::index/$1');
     $routes->post('chat/sendMessage', 'Chat::sendMessage');

@@ -1,24 +1,21 @@
+const addBtn = document.getElementById('plus');
+const removeBtn = document.getElementById('minus');
+const ejerciciosContainer = document.getElementById('exercices-list');
 
+addBtn.addEventListener('click', () => {
+    const original = document.querySelector('.add-exercice-container');
+    const copia = original.cloneNode(true);
 
-const addBtn = document.getElementById('plus')
-const removeBtn = document.getElementById('minus')
-const original = document.querySelector('.add-exercice-container')
-const ejercicios = document.getElementById('exercices-list')
+    const inputs = copia.querySelectorAll('input, textarea');
+    inputs.forEach(input => input.value = '');
 
-let numeroEjercicios = 1
+    ejerciciosContainer.appendChild(copia);
+});
 
-addBtn.addEventListener('click' , () => {
-    numeroEjercicios++
-    const copia = original.cloneNode(true)
-    ejercicios.appendChild(copia)
-
+removeBtn.addEventListener('click', () => {
+    const todosLosEjercicios = document.querySelectorAll('.add-exercice-container');
     
-})
-removeBtn.addEventListener('click' , () => {
-    if(numeroEjercicios > 1) 
-    {
-            numeroEjercicios--
-            ejercicios.lastChild.remove()
+    if (todosLosEjercicios.length > 1) {
+        ejerciciosContainer.lastElementChild.remove();
     }
-    
-})
+});

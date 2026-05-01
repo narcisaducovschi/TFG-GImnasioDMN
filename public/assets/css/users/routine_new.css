@@ -1,114 +1,153 @@
-
-.container-new{
+/* Estilos Generales del Contenedor */
+.container-new {
     background-color: #fff;
     width: 70%;
-    height: auto;
-    margin: 5% 25%;
-    font-family: Montserrat, sans-serif;
+    margin: 50px auto 50px 25%;
+    font-family: 'Montserrat', sans-serif;
     border: 1px solid #d3d3d3;
     border-radius: 25px;
+    padding-bottom: 20px;
 }
 
-.container-new form{
-    padding: 1% 5%;
+.container-new form {
+    padding: 2% 5%;
 }
-.container-new h3{
-    font-size: 25px;
+
+.container-new h3 {
+    font-size: 24px;
     font-weight: 600;
+    margin-bottom: 15px;
 }
 
-.form-header{
+/* Cabecera: Grupo Muscular y Botón Enviar */
+.form-header {
     display: flex;
-    flex-direction: row;
-    flex: 1;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
-.form-subheader{
+.form-subheader {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .form-header button {
     background-color: #fed107;
     border: 1px solid #d3d3d3;
     border-radius: 25px;
-    padding: 1% 5%;
+    padding: 12px 40px;
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .form-header button:hover {
-    cursor: pointer;
     background-color: #000;
     color: #fff;
 }
 
-label{
+/* Etiquetas generales */
+label {
     color: #000;
-    font-size: 25px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
 }
 
-input{
-    color: #000;
-    font-weight: 400;
-    font-size: 16px;
-    width: 334px;
-    height: 33px;
-    border-radius: 25px;
-    border: 1px solid #d3d3d3;
-    padding: 3%;
-}
-
-.add-exercice-container{
+/* Bloque de Ejercicio Individual */
+.add-exercice-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
     display: flex;
-    flex-direction: row;
-    flex: 1;
-    gap: 5%;
-    border: 1px solid #d3d3d3;
-    border-radius: 25px;
-    padding: 1% 5%;
-    margin-top: 2%;
+    flex-direction: column;
+    gap: 20px; /* Separación entre bloques internos (Nombre vs Stats vs Notas) */
 }
 
-.add-exercice-container:first-child{
-    margin-top: 0%;
+/* Filas completas */
+.form-row-full {
+    width: 100%;
 }
 
-.add-exercice-container label{
-    font-size: 20px;
-
+/* Grid específico para Series y Repeticiones */
+.form-grid-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Aquí controlas el espacio entre Series y Repeticiones */
 }
 
-.add-exercice-info{
+.input-group {
     display: flex;
     flex-direction: column;
 }
 
-#exercice_notes{
-    height: 80%;
+/* Inputs y Textarea dentro de los ejercicios */
+.add-exercice-container input, 
+.add-exercice-container textarea {
+    width: 100%;
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 15px;
+    font-family: inherit;
+    margin-bottom: 0; /* Quitamos el margen inferior para usar el gap del padre */
 }
 
-.btn-new-container{
-    width: 100%;
+/* Estilo del campo de grupo muscular (el de arriba del todo) */
+.form-subheader input {
+    max-width: 400px;
+    border-radius: 15px;
+    border: 1px solid #d3d3d3;
+    padding: 12px;
+}
+
+.add-exercice-container input:focus, 
+.add-exercice-container textarea:focus {
+    border-color: #fed107;
+    outline: none;
+    box-shadow: 0 0 5px rgba(254, 209, 7, 0.2);
+}
+
+.add-exercice-container textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* Botones + y - */
+.btn-new-container {
     display: flex;
-    flex-direction: row;
-    gap: 5%;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-new-container a {
+    border: 1px solid #d3d3d3;
+    width: 55px;
+    height: 55px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3%;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #fff;
 }
 
-.btn-new-container a{
-    border: 1px solid #d3d3d3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 999999px; 
-    cursor: pointer;
-} 
+.btn-new-container a:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
 
+.btn-new-container img {
+    width: 24px;
+}
