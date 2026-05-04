@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ClaseModel;
 use App\Models\RutinaModel;
+use App\Models\ReservaModel;
 
 class UserController extends BaseController
 {
@@ -55,7 +57,7 @@ class UserController extends BaseController
         $dia = $this->request->getPost('dia');
         $grupoMuscular = $this->request->getPost('grupo_muscular');
         $nombres = $this->request->getPost('exercice_name');
-        
+
         if (empty($nombres) || empty($nombres[0])) {
             return redirect()->back()->withInput()->with('error', 'Añade al menos un ejercicio.');
         }
@@ -125,5 +127,52 @@ class UserController extends BaseController
     {
         $this->db->table('rutina_ejercicios')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Eliminado.');
+    }
+    public function clases()
+    {
+        $userId = session()->get('user_id');
+        $claseModel = new ClaseModel();
+        $reservaModel = new ReservaModel();
+
+        $clases = $claseModel->getClasesFull();
+
+        $misReservas = $reservaModel->db->table('reservas')
+            ->select('clases.fecha, clases.hora')
+            ->join('clases', 'clases.id = reservas.id_clase')
+            ->where('reservas.id_usuario', $userId)
+            ->get()
+            ->getResultArray();
+
+        $horariosOcupados = array_map(function ($r) {
+            return $r['fecha'] . '|' . $r['hora'];
+        }, $misReservas);
+
+        return view('users/clases', [
+            'clases'   => $clases,
+            'ocupados' => $horariosOcupados
+        ]);
+    }
+
+    public function reservar($idClase)
+    {
+        $userId = session()->get('user_id');
+        $reservaModel = new \App\Models\ReservaModel();
+        $claseModel = new \App\Models\ClaseModel();
+
+        $clase = $claseModel->find($idClase);
+
+        if (!$clase) return redirect()->back()->with('error', 'Clase no encontrada.');
+
+        if ($reservaModel->existeConflictoHorario($userId, $clase['fecha'], $clase['hora'])) {
+            return redirect()->back()->with('error', 'Ya tienes una clase reservada en este horario.');
+        }
+
+        $reservaModel->insert([
+            'id_usuario' => $userId,
+            'id_clase'   => $idClase,
+            'estado'     => 'confirmada'
+        ]);
+
+        return redirect()->to('/clases')->with('success', '¡Reserva confirmada!');
     }
 }

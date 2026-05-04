@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label>Imagen de la Clase</label>
                     <input type="file" name="imagen" accept="image/*" required>
-                    <small style="color: #666; margin-top: 5px;">Formatos permitidos: JPG, PNG. Máx 2MB.</small>
+                    <small style="color: #666; margin-top: 5px;">Formatos permitidos: JPG, PNG. Máx 5MB.</small>
                 </div>
 
                 <div class="form-group">

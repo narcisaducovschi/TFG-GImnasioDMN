@@ -31,11 +31,14 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->post('routine/store', 'UserController::storeExercise');
     $routes->get('routine/edit/(:num)', 'UserController::editExercise/$1');
     $routes->post('routine/update/(:num)', 'UserController::updateExercise/$1');
-    // Chatas
+    // Chats
     $routes->get('chats', 'Chat::index');
     $routes->get('chats/(:num)', 'Chat::index/$1');
     $routes->post('chat/sendMessage', 'Chat::sendMessage');
     $routes->get('chats/nuevo', 'Chat::nuevo');
+    // Clases
+    $routes->get('clases', 'UserController::clases');
+    $routes->get('clases/reservar/(:num)', 'UserController::reservar/$1');
 });
 
 // Administrador

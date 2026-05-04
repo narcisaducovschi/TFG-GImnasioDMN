@@ -221,7 +221,7 @@ class Admin extends BaseController
             'id_profesor' => 'required|is_natural_no_zero',
             'fecha'       => 'required|valid_date',
             'hora'        => 'required',
-            'imagen'      => 'uploaded[imagen]|max_size[imagen,2048]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png]'
+            'imagen'      => 'uploaded[imagen]|max_size[imagen,5120]|is_image[imagen]|mime_in[imagen,image/jpg,image/jpeg,image/png]'
         ];
 
         if (!$this->validate($validationRules)) {
@@ -245,3 +245,5 @@ class Admin extends BaseController
         return redirect()->to('admin/clasesAdmin')->with('success', 'Clase creada correctamente.');
     }
 }
+
+?>

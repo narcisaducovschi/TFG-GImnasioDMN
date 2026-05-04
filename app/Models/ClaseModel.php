@@ -39,4 +39,6 @@ class ClaseModel extends Model
                     ->join('usuarios', 'usuarios.id = clases.id_profesor')
                     ->findAll();
     }
+
+    
 }
