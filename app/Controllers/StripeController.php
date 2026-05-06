@@ -52,15 +52,14 @@ class StripeController extends BaseController
 
     public function pagoExito()
     {
-
         $sessionId = $this->request->getGet('session_id');
 
         if (!$sessionId) {
             return redirect()->to('/register');
         }
 
-        Stripe::setApiKey(STRIPE_SECRET);
-        // Recuperar sesión de Stripe
+        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
+
         $checkoutSession = \Stripe\Checkout\Session::retrieve($sessionId);
 
         if ($checkoutSession->payment_status !== 'paid') {
@@ -74,18 +73,41 @@ class StripeController extends BaseController
             return redirect()->to('/register');
         }
 
-        $userModel = new UserModel();
+        $userData['stripe_customer_id'] = $checkoutSession->customer;
 
+        $userModel = new \App\Models\UserModel();
         $userModel->insert($userData);
 
-        // limpiar datos de registro
         $session->remove('register_data');
 
         return view('pago_exito', ['sessionId' => $sessionId]);
     }
 
+
     public function pagoCancelado()
     {
         return view('pago_cancelado');
+    }
+
+    public function portalSuscripcion()
+    {
+        $userId = session()->get('user_id');
+
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        if (!$user || empty($user['stripe_customer_id'])) {
+            return redirect()->back()->with('error', 'No se encontró una suscripción vinculada a tu cuenta.');
+        }
+
+        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
+
+        $session = \Stripe\BillingPortal\Session::create([
+            'customer' => $user['stripe_customer_id'],
+            'return_url' => base_url('misClases'), // donde vuelve al salir de Stripe
+        ]);
+
+        // Redirigimos a stripe
+        return redirect()->to($session->url);
     }
 }

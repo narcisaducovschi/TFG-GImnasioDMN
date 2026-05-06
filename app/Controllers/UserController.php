@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\ClaseModel;
 use App\Models\RutinaModel;
 use App\Models\ReservaModel;
+use App\Models\UserModel;
+
 
 class UserController extends BaseController
 {
@@ -192,5 +194,23 @@ class UserController extends BaseController
         }
 
         return redirect()->to('/misClases')->with('error', 'No se pudo cancelar la reserva.');
+    }
+
+    // Gestión suscripcion
+    public function cuenta()
+    {
+        $userId = session()->get('user_id');
+        $userModel = new UserModel();
+
+        $user = $userModel->find($userId);
+
+        if (!$user) {
+            return redirect()->to('/login');
+        }
+
+        return view('users/cuenta', [
+            'usuario'    => $user,
+            'nombrePlan' => $user['plan_nombre'] ?? 'Plan Gratuito'
+        ]);
     }
 }

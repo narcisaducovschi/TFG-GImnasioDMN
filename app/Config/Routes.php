@@ -11,6 +11,7 @@ $routes->get('/', 'Home::index');
 $routes->post('stripe/subscription', 'StripeController::subscription');
 $routes->get('pago-exito', 'StripeController::pagoExito');
 $routes->get('pago-cancelado', 'StripeController::pagoCancelado');
+$routes->post('webhooks/stripe', 'WebhookController::index');
 // Routes básico, hay que cambiarlo
 $routes->get('/login', 'Auth::login');
 $routes->post('auth/processLogin', 'Auth::processLogin');
@@ -18,7 +19,7 @@ $routes->get('/register', 'Auth::register');
 $routes->get('/payment', 'Auth::payment');
 $routes->post('auth/processRegister', 'Auth::processRegister');
 $routes->get('/logout', 'Auth::logout');
-
+// Vista al borrar la cuenta con stripe 
 $routes->get('/shop', 'ShopController::tienda');
 $routes->get('/search', 'ShopController::buscar');
 
@@ -41,6 +42,9 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('clases/reservar/(:num)', 'UserController::reservar/$1');
     $routes->get('misClases', 'UserController::misClases');
     $routes->get('clases/cancelar/(:num)', 'UserController::cancelarReserva/$1');
+    // Cuenta
+    $routes->get('cuenta', 'UserController::cuenta');
+    $routes->get('portal-suscripcion', 'StripeController::portalSuscripcion');
 });
 
 // Administrador

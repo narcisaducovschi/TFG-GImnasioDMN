@@ -41,3 +41,9 @@ Gimnasio-TFG/
 | Soporte      | support@example.com | supportsupport |
 | Usuario      | user@example.com    | useruser       |
 
+## Stripe
+
+Para que funcione ejecutar
+```bash
+stripe listen --forward-to localhost:8080/webhooks/stripe
+```

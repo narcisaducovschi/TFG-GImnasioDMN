@@ -25,7 +25,8 @@ class UserModel extends Model
         'ciudad',
         'id_suscripcion',
         'id_rol',
-        'id_class'
+        'id_class',
+        'stripe_customer_id'
     ];
 
     protected $useTimestamps = false;
