@@ -2,109 +2,285 @@
     --sidebar-width: 200px;
     --primary-color: #fed107;
     --primary-hover: #e5bc06;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
     --text-dark: #1a1a1a;
     --text-light: #666;
-    --bg-light: #f8f9fa;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --bg-light: #f4f6f8;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
 }
 
 body {
     background-color: var(--bg-light);
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
 }
 
 .main-content {
     margin-left: var(--sidebar-width);
-    padding: 2rem;
+    padding: 3rem 2rem;
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .header-section {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1.5rem;
 }
 
+.header-section h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.header-section p {
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+/* Grid optimizado */
 .clases-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
 }
 
+/* Card con mejor diseño */
 .clase-card {
     background: white;
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .clase-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
 }
 
 .clase-image {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
+    border-bottom: 4px solid var(--primary-color);
 }
 
 .clase-info {
-    padding: 1.25rem;
+    padding: 1.5rem;
     flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
 }
 
 .clase-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.8rem;
-    color: var(--text-dark);
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
 .clase-detail {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-light);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .clase-detail i {
-    width: 24px;
-    margin-right: 10px;
-    color: #ccaa00;
-    text-align: center;
+    width: 28px;
+    font-size: 1.1rem;
+    color: var(--primary-hover);
+}
+
+.clase-actions {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
 }
 
 .btn-inscribir {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
-    padding: 0.85rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--text-dark);
-    text-align: center;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s ease;
     border: none;
-    transition: background 0.2s;
+    margin: 0 auto;
+}
+
+.clase-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .btn-inscribir:hover {
     background-color: var(--primary-hover);
+    transform: scale(1.02);
+}
+
+.btn-inscribir.btn-success {
+    background-color: var(--success-color);
+    color: white;
+    cursor: default;
+    pointer-events: none;
 }
 
 .btn-inscribir.btn-disabled {
-    background-color: #e0e0e0;
-    color: #888;
+    background-color: #eaecf0;
+    color: #98a2b3;
     cursor: not-allowed;
     pointer-events: none;
 }
 
+.alert {
+    border-radius: 12px;
+    font-weight: 500;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
 @media (max-width: 768px) {
-    .main-content { margin-left: 0; padding: 1rem; }
+    .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+
+    .header-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .clases-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Modal */
+
+/* Overlay y Contenedor */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    /* Se activa con JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    background: var(--primary-color);
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-header i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.modal-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-details {
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+    border: 1px dashed #ccc;
+}
+
+.modal-footer {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+}
+
+/* Botones del Modal */
+.btn-primario,
+.btn-secundario {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.btn-primario {
+    background: var(--primary-color);
+    color: var(--text-dark);
+}
+
+.btn-primario:hover {
+    background: var(--primary-hover);
+}
+
+.btn-secundario {
+    background: #eee;
+    color: var(--text-light);
+}
+
+.btn-secundario:hover {
+    background: #ddd;
 }

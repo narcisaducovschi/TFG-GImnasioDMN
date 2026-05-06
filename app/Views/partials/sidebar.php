@@ -44,7 +44,8 @@ switch ($role) {
             ['href' => '/home', 'icon' => 'home.svg', 'text' => 'Home'],
             ['href' => '/routine', 'icon' => 'rutina.svg', 'text' => 'Rutinas'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
-            ['href' => '/clases',   'icon' => 'calendar.svg', 'text' => 'Clases'],
+            ['href' => '/clases',   'icon' => 'calendar.svg', 'text' => 'Reservar clases'],
+            ['href' => '/misClases',   'icon' => 'reserva.svg', 'text' => 'Mis clases'],
             ['href' => '/cuenta',   'icon' => 'user.svg',   'text' => 'Tu cuenta'],
             ['href' => '/soporte',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];

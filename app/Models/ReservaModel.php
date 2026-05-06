@@ -36,4 +36,23 @@ class ReservaModel extends Model
             ->orderBy('clases.fecha', 'ASC')
             ->findAll();
     }
+    public function tieneConflictoProximidad($userId, $fecha, $horaNueva)
+    {
+        $horaInicio = new \DateTime($horaNueva);
+        // Margen inclusivo de 1 hora
+        $margenInicio = (clone $horaInicio)->modify('-1 hour')->format('H:i:s');
+        $margenFin    = (clone $horaInicio)->modify('+1 hour')->format('H:i:s');
+
+        return $this->db->table('reservas')
+            ->join('clases', 'clases.id = reservas.id_clase')
+            ->where('reservas.id_usuario', $userId)
+            ->where('clases.fecha', $fecha)
+            ->groupStart()
+            // Si la clase guardada está entre Nueva-1h y Nueva+1h, hay conflicto
+            ->where('clases.hora >=', $margenInicio)
+            ->where('clases.hora <=', $margenFin)
+            ->groupEnd()
+            ->where('reservas.estado', 'confirmada')
+            ->countAllResults() > 0;
+    }
 }

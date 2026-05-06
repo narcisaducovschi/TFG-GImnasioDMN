@@ -128,6 +128,7 @@ class UserController extends BaseController
         $this->db->table('rutina_ejercicios')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Eliminado.');
     }
+
     public function clases()
     {
         $userId = session()->get('user_id');
@@ -135,36 +136,28 @@ class UserController extends BaseController
         $reservaModel = new ReservaModel();
 
         $clases = $claseModel->getClasesFull();
-
-        $misReservas = $reservaModel->db->table('reservas')
-            ->select('clases.fecha, clases.hora')
-            ->join('clases', 'clases.id = reservas.id_clase')
-            ->where('reservas.id_usuario', $userId)
-            ->get()
-            ->getResultArray();
-
-        $horariosOcupados = array_map(function ($r) {
-            return $r['fecha'] . '|' . $r['hora'];
-        }, $misReservas);
+        $misReservas = $reservaModel->getReservasUsuario($userId);
 
         return view('users/clases', [
-            'clases'   => $clases,
-            'ocupados' => $horariosOcupados
+            'clases'      => $clases,
+            'misReservas' => $misReservas
         ]);
     }
 
     public function reservar($idClase)
     {
         $userId = session()->get('user_id');
-        $reservaModel = new \App\Models\ReservaModel();
-        $claseModel = new \App\Models\ClaseModel();
+        $reservaModel = new ReservaModel();
+        $claseModel = new ClaseModel();
 
         $clase = $claseModel->find($idClase);
 
-        if (!$clase) return redirect()->back()->with('error', 'Clase no encontrada.');
+        if (!$clase) {
+            return redirect()->back()->with('error', 'Clase no encontrada.');
+        }
 
-        if ($reservaModel->existeConflictoHorario($userId, $clase['fecha'], $clase['hora'])) {
-            return redirect()->back()->with('error', 'Ya tienes una clase reservada en este horario.');
+        if ($reservaModel->tieneConflictoProximidad($userId, $clase['fecha'], $clase['hora'])) {
+            return redirect()->back()->with('error', 'No puedes reservar clases con menos de una hora de diferencia entre ellas.');
         }
 
         $reservaModel->insert([
@@ -172,7 +165,6 @@ class UserController extends BaseController
             'id_clase'   => $idClase,
             'estado'     => 'confirmada'
         ]);
-
         return redirect()->to('/clases')->with('success', '¡Reserva confirmada!');
     }
 }
