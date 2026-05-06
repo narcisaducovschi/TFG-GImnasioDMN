@@ -39,6 +39,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     // Clases
     $routes->get('clases', 'UserController::clases');
     $routes->get('clases/reservar/(:num)', 'UserController::reservar/$1');
+    $routes->get('misClases', 'UserController::misClases');
+    $routes->get('clases/cancelar/(:num)', 'UserController::cancelarReserva/$1');
 });
 
 // Administrador

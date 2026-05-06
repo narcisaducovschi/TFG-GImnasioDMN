@@ -167,4 +167,30 @@ class UserController extends BaseController
         ]);
         return redirect()->to('/clases')->with('success', '¡Reserva confirmada!');
     }
+
+    public function misClases()
+    {
+        $userId = session()->get('user_id');
+        if (!$userId) return redirect()->to('/login');
+
+        $reservaModel = new ReservaModel();
+        $data['reservas'] = $reservaModel->getReservasUsuario($userId);
+
+        return view('users/mis_clases', $data);
+    }
+
+    public function cancelarReserva($idReserva)
+    {
+        $userId = session()->get('user_id');
+        $reservaModel = new ReservaModel();
+
+        $reserva = $reservaModel->where(['id' => $idReserva, 'id_usuario' => $userId])->first();
+
+        if ($reserva) {
+            $reservaModel->delete($idReserva);
+            return redirect()->to('/misClases')->with('success', 'Reserva cancelada correctamente.');
+        }
+
+        return redirect()->to('/misClases')->with('error', 'No se pudo cancelar la reserva.');
+    }
 }
