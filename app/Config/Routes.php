@@ -82,3 +82,9 @@ $routes->group('soporte', ['filter' => 'support'], function($routes) {
     $routes->get('mis-casos', 'SoporteController::misCasos');
     $routes->post('resolver/(:num)', 'SoporteController::resolverTicket/$1');
 });
+
+// Profesores
+
+$routes->group('teacher', ['filter' => 'teacher'], function($routes){
+    $routes->get('misClases', 'ProfesorController::misClases');
+});

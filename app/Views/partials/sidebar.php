@@ -28,9 +28,9 @@ switch ($role) {
 
     case 3:
         $sidebar_links = [
-            ['href' => '/clases',  'icon' => 'calendar.svg', 'text' => 'Clases'],
-            ['href' => '/chats',   'icon' => 'chats.svg',    'text' => 'Chats'],
-            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
+            ['href' => 'teacher/misClases', 'icon' => 'calendar.svg', 'text' => 'Mis Clases'],
+            ['href' => 'chats',              'icon' => 'chats.svg',    'text' => 'Chats'],
+            ['href' => 'tickets',            'icon' => 'help.svg',     'text' => 'Soporte'],
         ];
         break;
 

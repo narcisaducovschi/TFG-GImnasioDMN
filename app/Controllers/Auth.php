@@ -81,7 +81,7 @@ class Auth extends BaseController
                 return redirect()->to('/worker/myTasks');
 
             case 3: // Profesor: Ver sus clases
-                return redirect()->to('/teacher/myClasses');
+                return redirect()->to('/teacher/misClases');
 
             case 4: // Support: Atención al cliente
                 return redirect()->to('/soporte/pendientes');
