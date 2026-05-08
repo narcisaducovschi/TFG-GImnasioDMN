@@ -67,3 +67,20 @@ $routes->group('worker', ['filter' => 'worker'], function ($routes) {
     $routes->get('myTasks', 'Worker::myTasks');
     $routes->post('completeTask/(:num)', 'Worker::completeTask/$1');
 });
+
+// Tickets
+
+$routes->group('tickets', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'TicketsController::index');             
+    $routes->get('nuevo', 'TicketsController::crear');         
+    $routes->post('guardar', 'TicketsController::guardar');    
+    $routes->get('ver/(:num)', 'TicketsController::ver/$1');  
+});
+
+// Soporte
+$routes->group('soporte', ['filter' => 'isSupport'], function($routes) {
+    $routes->get('pendientes', 'SoporteController::pendientes'); 
+    $routes->get('tomar/(:num)', 'SoporteController::asignar/$1'); // Acción de auto-asignarse
+    $routes->get('mis-casos', 'SoporteController::misCasos');
+    $routes->post('resolver/(:num)', 'SoporteController::resolver/$1'); // Cambiar estado a 'Resuelto'
+});
