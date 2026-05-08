@@ -80,7 +80,7 @@ $routes->group('tickets', ['filter' => 'auth'], function ($routes) {
 // Soporte
 $routes->group('soporte', ['filter' => 'support'], function($routes) {
     $routes->get('pendientes', 'SoporteController::pendientes'); 
-    $routes->get('tomar/(:num)', 'SoporteController::asignar/$1'); // Acción de auto-asignarse
+    $routes->get('tomar/(:num)', 'SoporteController::asignar/$1');
     $routes->get('mis-casos', 'SoporteController::misCasos');
-    $routes->post('resolver/(:num)', 'SoporteController::resolver/$1'); // Cambiar estado a 'Resuelto'
+    $routes->post('resolver/(:num)', 'SoporteController::resolver/$1');
 });
