@@ -78,7 +78,7 @@ $routes->group('tickets', ['filter' => 'auth'], function ($routes) {
 });
 
 // Soporte
-$routes->group('soporte', ['filter' => 'isSupport'], function($routes) {
+$routes->group('soporte', ['filter' => 'support'], function($routes) {
     $routes->get('pendientes', 'SoporteController::pendientes'); 
     $routes->get('tomar/(:num)', 'SoporteController::asignar/$1'); // Acción de auto-asignarse
     $routes->get('mis-casos', 'SoporteController::misCasos');
