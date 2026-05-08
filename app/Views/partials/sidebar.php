@@ -13,7 +13,7 @@ switch ($role) {
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => 'admin/clasesAdmin',   'icon' => 'calendar.svg', 'text' => 'Gestionar clases'],
             ['href' => 'admin/usersAdmin',   'icon' => 'user.svg',   'text' => 'Gestionar Usuarios'],
-            ['href' => '/soporte',  'icon' => 'help.svg',   'text' => 'Soporte'],
+            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];
         break;
 
@@ -22,6 +22,7 @@ switch ($role) {
             ['href' => '/users', 'icon' => 'user.svg', 'text' => 'Socios'],
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => '/worker/myTasks',   'icon' => 'tasks.svg',   'text' => 'Mis tareas'],
+            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];
         break;
 
@@ -29,13 +30,15 @@ switch ($role) {
         $sidebar_links = [
             ['href' => '/clases',  'icon' => 'calendar.svg', 'text' => 'Clases'],
             ['href' => '/chats',   'icon' => 'chats.svg',    'text' => 'Chats'],
+            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];
         break;
 
     case 4:
         $sidebar_links = [
-            ['href' => '/support', 'icon' => 'help.svg', 'text' => 'Tickets'],
-            ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
+            ['href' => 'soporte/pendientes', 'icon' => 'help.svg', 'text' => 'Bandeja Entrada'],
+            ['href' => 'soporte/mis-casos',  'icon' => 'tasks.svg', 'text' => 'Mis Asignaciones'],
+            ['href' => 'chats',              'icon' => 'chats.svg', 'text' => 'Chats'],
         ];
         break;
 
@@ -47,7 +50,7 @@ switch ($role) {
             ['href' => '/clases',   'icon' => 'calendar.svg', 'text' => 'Reservar clases'],
             ['href' => '/misClases',   'icon' => 'reserva.svg', 'text' => 'Mis clases'],
             ['href' => '/cuenta',   'icon' => 'user.svg',   'text' => 'Tu cuenta'],
-            ['href' => '/soporte',  'icon' => 'help.svg',   'text' => 'Soporte'],
+            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
         ];
         break;
     default:

@@ -70,17 +70,14 @@ $routes->group('worker', ['filter' => 'worker'], function ($routes) {
 
 // Tickets
 
-$routes->group('tickets', ['filter' => 'auth'], function ($routes) {
-    $routes->get('/', 'TicketsController::index');             
-    $routes->get('nuevo', 'TicketsController::crear');         
-    $routes->post('guardar', 'TicketsController::guardar');    
-    $routes->get('ver/(:num)', 'TicketsController::ver/$1');  
+$routes->group('tickets', ['filter' => 'auth'], function ($routes) {    
+    $routes->get('/', 'SoporteController::misTickets');    
+    $routes->post('guardar', 'SoporteController::guardarTicket'); 
 });
 
-// Soporte
 $routes->group('soporte', ['filter' => 'support'], function($routes) {
-    $routes->get('pendientes', 'SoporteController::pendientes'); 
-    $routes->get('tomar/(:num)', 'SoporteController::asignar/$1');
+    $routes->get('pendientes', 'SoporteController::bandejaPendientes'); 
+    $routes->get('tomar/(:num)', 'SoporteController::asignarTicket/$1');
     $routes->get('mis-casos', 'SoporteController::misCasos');
-    $routes->post('resolver/(:num)', 'SoporteController::resolver/$1');
+    $routes->post('resolver/(:num)', 'SoporteController::resolverTicket/$1');
 });

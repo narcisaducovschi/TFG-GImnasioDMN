@@ -1,0 +1,195 @@
+:root {
+    --sidebar-width: 200px;
+    --primary-color: #fed107;
+    --primary-hover: #e5bc06;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --text-dark: #1a1a1a;
+    --text-light: #666;
+    --bg-light: #f4f6f8;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
+}
+
+body {
+    background-color: var(--bg-light);
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; /* Asegúrate de importar esta fuente en tu layout */
+    color: var(--text-dark);
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 3rem 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Header al estilo Gym */
+.header-section {
+    margin-bottom: 3rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-section h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    letter-spacing: -1px;
+    font-weight: 800;
+}
+
+/* Tabla Estilizada como Card */
+.tickets-container {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.styled-table th {
+    background-color: #fafafa;
+    padding: 1.2rem 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.styled-table td {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.styled-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badges de Estado Redondeados */
+.badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-abierto { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.badge-asignado { background: #cfe2ff; color: #084298; border: 1px solid #b6d4fe; }
+.badge-resuelto { background: #d1e7dd; color: #0f5132; border: 1px solid #badbcc; }
+
+/* Botones con estilo del Gym */
+.btn-primary-gym {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary-gym:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+/* MODAL STYLES (Copiado de tu estructura) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content-gym {
+    background: white;
+    width: 95%;
+    max-width: 500px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header-gym {
+    background: var(--primary-color);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.modal-header-gym h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.modal-body-gym {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(254, 209, 7, 0.2);
+}
+
+/* Alert Feedback */
+.alert-success {
+    background-color: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
