@@ -60,6 +60,7 @@ $routes->group('admin', ['filter' => 'admin'], function ($routes) {
     $routes->get('createUser', 'Admin::createUser');
     $routes->post('saveUser', 'Admin::saveUser');
     $routes->post('deleteUser/(:num)', 'Admin::deleteUser/$1');
+    $routes->get('ticketsAdmin', 'Admin::getTicketsAdmin');
 });
 
 //Trabajador

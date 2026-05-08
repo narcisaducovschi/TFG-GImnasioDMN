@@ -4,9 +4,15 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\TareaModel;
+use App\Models\TicketModel;
 
 class Admin extends BaseController
 {
+    public function __construct()
+    {
+        helper(['text', 'url', 'form']);
+    }
+
     public function getTrabajadores()
     {
         $userModel = new UserModel();
@@ -244,6 +250,22 @@ class Admin extends BaseController
 
         return redirect()->to('admin/clasesAdmin')->with('success', 'Clase creada correctamente.');
     }
-}
 
-?>
+    // Tickets
+    public function getTicketsAdmin()
+    {
+        $ticketModel = new TicketModel();
+        $db = \Config\Database::connect();
+
+        $data['tickets'] = $db->table('tickets t')
+            ->select('t.*, u.nombre as cliente_nombre, u.apellidos as cliente_apellido, ut.nombre as tecnico_nombre')
+            ->join('usuarios u', 'u.id = t.id_usuarios')
+            ->join('ref_tickets_support r', 'r.id_ticket = t.id', 'left')
+            ->join('usuarios ut', 'ut.id = r.id_usuarios', 'left')
+            ->orderBy('t.fecha_creacion', 'DESC')
+            ->get()
+            ->getResultArray();
+
+        return view('admin/ticketsAdmin', $data);
+    }
+}

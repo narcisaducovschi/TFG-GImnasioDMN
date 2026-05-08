@@ -13,7 +13,7 @@ switch ($role) {
             ['href' => '/chats',    'icon' => 'chats.svg',  'text' => 'Chats'],
             ['href' => 'admin/clasesAdmin',   'icon' => 'calendar.svg', 'text' => 'Gestionar clases'],
             ['href' => 'admin/usersAdmin',   'icon' => 'user.svg',   'text' => 'Gestionar Usuarios'],
-            ['href' => '/tickets',  'icon' => 'help.svg',   'text' => 'Soporte'],
+            ['href' => 'admin/ticketsAdmin',  'icon' => 'help.svg',   'text' => 'Supervisión Soporte'],
         ];
         break;
 
