@@ -208,9 +208,17 @@ class UserController extends BaseController
             return redirect()->to('/login');
         }
 
+        $planes = [
+            2 => 'Plan Básico',
+            3 => 'Plan Premium',
+        ];
+
+        $idSuscripcion = $user['id_suscripcion'] ?? null;
+        $nombrePlan = $planes[$idSuscripcion] ?? 'Plan Gratuito';
+
         return view('users/cuenta', [
             'usuario'    => $user,
-            'nombrePlan' => $user['plan_nombre'] ?? 'Plan Gratuito'
+            'nombrePlan' => $nombrePlan
         ]);
     }
 }
