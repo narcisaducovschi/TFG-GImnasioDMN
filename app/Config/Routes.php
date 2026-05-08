@@ -19,9 +19,16 @@ $routes->get('/register', 'Auth::register');
 $routes->get('/payment', 'Auth::payment');
 $routes->post('auth/processRegister', 'Auth::processRegister');
 $routes->get('/logout', 'Auth::logout');
-// Vista al borrar la cuenta con stripe 
-$routes->get('/shop', 'ShopController::tienda');
-$routes->get('/search', 'ShopController::buscar');
+// Tienda y carrito
+$routes->get('shop', 'ShopController::tienda');
+$routes->get('search', 'ShopController::buscar');
+$routes->post('tienda/add-ajax', 'ShopController::añadirAlCarritoAjax'); 
+$routes->get('tienda/get-cart-json', 'ShopController::getCartJson');
+$routes->post('tienda/update-cart', 'ShopController::updateCart');
+
+// Pasarela Stripe
+$routes->get('checkout-carrito', 'StripeController::checkoutCarrito');
+$routes->get('pago-tienda-exito', 'StripeController::pagoTiendaExito');
 
 // Usuarios
 $routes->group('', ['filter' => 'auth'], function ($routes) {

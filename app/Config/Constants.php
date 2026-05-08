@@ -107,15 +107,15 @@ defined('PLANES') || define('PLANES', [
 ]);
 
 defined('PRODUCTOS_STRIPE') || define('PRODUCTOS_STRIPE', [
-    'BARRA_AVENA' => getenv('BARRA_AVENA'),
-    'CREATINA' => getenv('CREATINA'),
-    'PREENTRENO_GEL' => getenv('PREENTRENO_GEL'),
-    'MOCHILA' => getenv('MOCHILA'),
-    'STRAPS' => getenv('STRAPS'),
-    'CAPSULAS_OMEGA3' => getenv('CAPSULAS_OMEGA3'),
-    'SNACK_PATATA' => getenv('SNACK_PATATA'),
-    'PREENTRENO_POLVO' => getenv('PREENTRENO_POLVO'),
+    'BARRA_AVENA'           => getenv('BARRA_AVENA'),
+    'CREATINA'              => getenv('CREATINA'),
+    'PREENTRENO_GEL'        => getenv('PREENTRENO_GEL'),
+    'MOCHILA'               => getenv('MOCHILA'),
+    'STRAPS'                => getenv('STRAPS'),
+    'CAPSULAS_OMEGA3'       => getenv('CAPSULAS_OMEGA3'),
+    'SNACK_PATATA'          => getenv('SNACK_PATATA'),
+    'PREENTRENO_POLVO'      => getenv('PREENTRENO_POLVO'),
     'PREENTRENO_SOUR_BERRY' => getenv('PREENTRENO_SOUR_BERRY'),
-    'PROTEINA_CHOCOLATE' => getenv('PROTEINA_CHOCOLATE'),
-    'SHAKER' => getenv('SHAKER')
+    'PROTEINA_CHOCOLATE'    => getenv('PROTEINA_CHOCOLATE'),
+    'SHAKER'                => getenv('SHAKER')
 ]);

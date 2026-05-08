@@ -9,105 +9,56 @@ use App\Models\UserModel;
 
 class StripeController extends BaseController
 {
-
-    public function subscription()
+    public function __construct()
     {
-        $sessionUser = session()->get('register_data');
-
-        if (!$sessionUser) {
-            return redirect()->to('/register');
-        }
-
-        $priceId = $this->request->getPost('price_id');
-
-        $planes = [
-            PLANES['PLAN_BASICO'] => 2,
-            PLANES['PLAN_PREMIUM'] => 3
-        ];
-
-        if (!isset($planes[$priceId])) {
-            die('Plan no válido');
-        }
-
-        // asignar rol según plan
-        $sessionUser['id_suscripcion'] = $planes[$priceId];
-
-        session()->set('register_data', $sessionUser);
-
-        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
-
-        $session = \Stripe\Checkout\Session::create([
-            'mode' => 'subscription',
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-                'price' => $priceId,
-                'quantity' => 1,
-            ]],
-            'success_url' => base_url('pago-exito') . '?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => base_url('pago-cancelado'),
-        ]);
-
-        return redirect()->to($session->url);
+        $key = env('STRIPE_SECRET') ?? STRIPE_SECRET;
+        \Stripe\Stripe::setApiKey($key);
     }
 
-    public function pagoExito()
+    public function checkoutCarrito()
     {
-        $sessionId = $this->request->getGet('session_id');
+        $cart = session()->get('cart');
 
-        if (!$sessionId) {
-            return redirect()->to('/register');
+        if (!$cart || empty($cart)) {
+            return redirect()->to('/search')->with('error', 'El carrito está vacío');
         }
 
-        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
+        $line_items = [];
+        
+        foreach ($cart as $item) {
+            $priceId = $item['stripe_price_id'];
 
-        $checkoutSession = \Stripe\Checkout\Session::retrieve($sessionId);
+            if (strpos($priceId, 'price_') !== 0) {
+                $priceId = PRODUCTOS_STRIPE[$priceId] ?? null;
+            }
 
-        if ($checkoutSession->payment_status !== 'paid') {
-            die('Pago no confirmado');
+            if (!$priceId || strpos($priceId, 'price_') !== 0) {
+                return "ERROR CRÍTICO: El producto '".$item['nombre']."' no tiene un Price ID válido. El valor obtenido fue: " . var_export($priceId, true) . ". Revisa tu archivo .env y constantes.";
+            }
+
+            $line_items[] = [
+                'price'    => $priceId,
+                'quantity' => $item['cantidad'],
+            ];
         }
 
-        $session = session();
-        $userData = $session->get('register_data');
+        try {
+            $checkout_session = \Stripe\Checkout\Session::create([
+                'line_items'  => $line_items,
+                'mode'        => 'payment',
+                'success_url' => base_url('pago-tienda-exito') . '?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url'  => base_url('search'),
+            ]);
 
-        if (!$userData) {
-            return redirect()->to('/register');
+            return redirect()->to($checkout_session->url);
+        } catch (\Exception $e) {
+            return "Error de Stripe: " . $e->getMessage();
         }
-
-        $userData['stripe_customer_id'] = $checkoutSession->customer;
-
-        $userModel = new \App\Models\UserModel();
-        $userModel->insert($userData);
-
-        $session->remove('register_data');
-
-        return view('pago_exito', ['sessionId' => $sessionId]);
     }
 
-
-    public function pagoCancelado()
+    public function pagoTiendaExito()
     {
-        return view('pago_cancelado');
-    }
-
-    public function portalSuscripcion()
-    {
-        $userId = session()->get('user_id');
-
-        $userModel = new UserModel();
-        $user = $userModel->find($userId);
-
-        if (!$user || empty($user['stripe_customer_id'])) {
-            return redirect()->back()->with('error', 'No se encontró una suscripción vinculada a tu cuenta.');
-        }
-
-        \Stripe\Stripe::setApiKey(STRIPE_SECRET);
-
-        $session = \Stripe\BillingPortal\Session::create([
-            'customer' => $user['stripe_customer_id'],
-            'return_url' => base_url('misClases'), // donde vuelve al salir de Stripe
-        ]);
-
-        // Redirigimos a stripe
-        return redirect()->to($session->url);
+        session()->remove('cart');
+        return view('tienda/pago_exito');
     }
 }
