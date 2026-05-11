@@ -37,8 +37,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     // Rutinas
     $routes->get('routine/new', 'UserController::createRoutine');
     $routes->post('routine/store', 'UserController::storeExercise');
-    $routes->get('routine/edit/(:num)', 'UserController::editExercise/$1');
-    $routes->post('routine/update/(:num)', 'UserController::updateExercise/$1');
+    $routes->get('routine/edit/(:segment)', 'UserController::editRoutineDay/$1');
+    $routes->post('routine/update/(:segment)', 'UserController::updateExercise/$1');
     // Chats
     $routes->get('chats', 'Chat::index');
     $routes->get('chats/(:num)', 'Chat::index/$1');

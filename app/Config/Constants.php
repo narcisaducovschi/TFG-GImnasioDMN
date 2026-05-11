@@ -89,10 +89,10 @@ defined('DIAS_SEMANA') || define('DIAS_SEMANA', [
     'Sunday'    => 'Domingo',
     'Monday'    => 'Lunes',
     'Tuesday'   => 'Martes',
-    'Wednesday' => 'Miércoles',
+    'Wednesday' => 'Miercoles',
     'Thursday'  => 'Jueves',
     'Friday'    => 'Viernes',
-    'Saturday'  => 'Sábado',
+    'Saturday'  => 'Sabado',
 ]);
 
 /**

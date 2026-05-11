@@ -1,0 +1,124 @@
+.container-new {
+    background-color: #fff;
+    margin: 50px 20px 50px 225px;
+    width: calc(100% - 245px);
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #d3d3d3;
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 15px;
+    border: 1px solid #d3d3d3;
+    padding: 12px 15px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 15px;
+    table-layout: fixed;
+}
+
+thead th:nth-child(1) {
+    width: 60%;
+}
+
+thead th:nth-child(2) {
+    width: 15%;
+}
+
+thead th:nth-child(3) {
+    width: 25%;
+}
+
+thead th {
+    color: #888;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 10px;
+}
+
+tbody td {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody td:first-child {
+    border-left: 1px solid #e0e0e0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+tbody td:last-child {
+    border-right: 1px solid #e0e0e0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+table input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
+table input:focus {
+    border-color: #fed107;
+    outline: none;
+}
+
+/* Botón Guardar */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.btn-save {
+    background-color: #fed107;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+@media (max-width: 992px) {
+    .container-new {
+        width: calc(100% - 40px);
+        margin: 20px auto;
+    }
+}

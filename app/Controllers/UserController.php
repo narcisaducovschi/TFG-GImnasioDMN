@@ -25,18 +25,28 @@ class UserController extends BaseController
         $userId = session()->get('user_id');
         if (!$userId) return redirect()->to('/login');
 
-        // Como pusiste la función en UserModel, instanciamos ese
         $userModel = new \App\Models\UserModel();
         $rutinaModel = new \App\Models\RutinaModel();
 
+        $diaHoy = $this->normalizarDia(DIAS_SEMANA[date('l')]);
+
         $data = [
             'misClases'     => $userModel->getReservasUsuario($userId),
-            'diaActual'     => DIAS_SEMANA[date('l')],
-            'ejerciciosHoy' => $rutinaModel->getRutinaCompleta((int)$userId, DIAS_SEMANA[date('l')])
+            'diaActual'     => $diaHoy,
+            'ejerciciosHoy' => $rutinaModel->getRutinaCompleta((int)$userId, $diaHoy)
         ];
 
         return view('users/index', $data);
     }
+
+    private function normalizarDia($dia)
+    {
+        $dia = strtolower($dia);
+        $acentos = ['á', 'é', 'í', 'ó', 'ú'];
+        $sinAcentos = ['a', 'e', 'i', 'o', 'u'];
+        return str_replace($acentos, $sinAcentos, $dia);
+    }
+
     public function routine()
     {
         $userId = session()->get('user_id');
@@ -46,7 +56,13 @@ class UserController extends BaseController
         }
 
         $diaRequest = $this->request->getGet('dia');
-        $diaSeleccionado = ($diaRequest && in_array($diaRequest, DIAS_SEMANA)) ? $diaRequest : DIAS_SEMANA[date('l')];
+        if ($diaRequest) {
+            $diaSeleccionado = $this->normalizarDia($diaRequest);
+        } else {
+            $diaSeleccionado = DIAS_SEMANA[date('l')];
+        }
+
+        $diaSeleccionado = $this->normalizarDia($diaSeleccionado);
 
         $ejercicios = $this->routineModel->getRutinaCompleta((int)$userId, $diaSeleccionado);
         $grupoMuscular = !empty($ejercicios) ? $ejercicios[0]['grupo_muscular'] : null;
@@ -68,7 +84,7 @@ class UserController extends BaseController
     public function storeExercise()
     {
         $userId = session()->get('user_id');
-        $dia = $this->request->getPost('dia');
+        $dia = $this->normalizarDia($this->request->getPost('dia'));
         $grupoMuscular = $this->request->getPost('grupo_muscular');
         $nombres = $this->request->getPost('exercice_name');
 
@@ -116,27 +132,52 @@ class UserController extends BaseController
         return redirect()->to('/routine?dia=' . $dia)->with('success', 'Guardado.');
     }
 
-    public function editExercise($id)
+    public function editRoutineDay($dia)
     {
-        $ejercicio = $this->db->table('rutina_ejercicios')->where('id', $id)->get()->getRowArray();
-        if (!$ejercicio) return redirect()->to('/routine');
+        $userId = session()->get('user_id');
+        $diaLimpio = $this->normalizarDia($dia); // Normalizar el parámetro de la URL
 
-        return view('users/routine/routine_edit', ['ejercicio' => $ejercicio]);
+        $rutina = $this->routineModel->where(['usuario_id' => $userId, 'dia' => $diaLimpio])->first();
+
+        if (!$rutina) {
+            return redirect()->to('/routine/new')->with('info', 'No hay rutina para este día.');
+        }
+
+        $ejercicios = $this->db->table('rutina_ejercicios')
+            ->where('rutina_id', $rutina['id'])
+            ->get()
+            ->getResultArray();
+
+        return view('users/routine/routine_edit_day', [
+            'rutina'     => $rutina,
+            'ejercicios' => $ejercicios,
+            'dia'        => $dia
+        ]);
     }
 
-    public function updateExercise($id)
+    public function updateRoutineDay()
     {
-        $data = [
-            'nombre_ejercicio' => $this->request->getPost('nombre_ejercicio'),
-            'series'           => $this->request->getPost('series'),
-            'repeticiones'     => $this->request->getPost('repeticiones'),
-            'notas'            => $this->request->getPost('notas'),
-        ];
+        $rutinaId = $this->request->getPost('rutina_id');
+        $grupoMuscular = $this->request->getPost('grupo_muscular');
+        $dia = $this->normalizarDia($this->request->getPost('dia'));
 
-        $this->db->table('rutina_ejercicios')->where('id', $id)->update($data);
-        return redirect()->to('/routine')->with('success', 'Actualizado.');
+        $this->routineModel->update($rutinaId, ['grupo_muscular' => $grupoMuscular]);
+
+        $ids = $this->request->getPost('exercise_id');
+        $nombres = $this->request->getPost('nombre_ejercicio');
+        $series = $this->request->getPost('series');
+        $reps = $this->request->getPost('repeticiones');
+
+        foreach ($ids as $index => $id) {
+            $this->db->table('rutina_ejercicios')->where('id', $id)->update([
+                'nombre_ejercicio' => $nombres[$index],
+                'series'           => $series[$index],
+                'repeticiones'     => $reps[$index]
+            ]);
+        }
+
+        return redirect()->to('/routine?dia=' . $dia)->with('success', 'Rutina actualizada');
     }
-
     public function deleteExercise($id)
     {
         $this->db->table('rutina_ejercicios')->where('id', $id)->delete();
