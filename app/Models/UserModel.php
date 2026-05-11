@@ -40,4 +40,21 @@ class UserModel extends Model
 
     protected $validationMessages = [];
     protected $skipValidation = false;
+    public function getReservasUsuario($userId)
+    {
+        return $this->db->table('reservas')
+            ->select([
+                'clases.nombre as nombre_clase',
+                'clases.hora as hora',
+                'clases.fecha as dia_semana',
+                'clases.imagen as imagen',
+                'profesores.nombre as nombre_profesor',
+                'profesores.apellidos as apellidos_profesor'
+            ])
+            ->join('clases', 'clases.id = reservas.id_clase')
+            ->join('usuarios as profesores', 'profesores.id = clases.id_profesor')
+            ->where('reservas.id_usuario', $userId)
+            ->get()
+            ->getResultArray();
+    }
 }

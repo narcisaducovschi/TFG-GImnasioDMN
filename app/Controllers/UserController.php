@@ -22,9 +22,21 @@ class UserController extends BaseController
 
     public function index()
     {
-        return view('users/index');
-    }
+        $userId = session()->get('user_id');
+        if (!$userId) return redirect()->to('/login');
 
+        // Como pusiste la función en UserModel, instanciamos ese
+        $userModel = new \App\Models\UserModel();
+        $rutinaModel = new \App\Models\RutinaModel();
+
+        $data = [
+            'misClases'     => $userModel->getReservasUsuario($userId),
+            'diaActual'     => DIAS_SEMANA[date('l')],
+            'ejerciciosHoy' => $rutinaModel->getRutinaCompleta((int)$userId, DIAS_SEMANA[date('l')])
+        ];
+
+        return view('users/index', $data);
+    }
     public function routine()
     {
         $userId = session()->get('user_id');
