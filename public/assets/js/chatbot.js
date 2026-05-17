@@ -5,6 +5,11 @@ const gymCloseChat = document.getElementById("gymCloseChat")
 const gymSendBtn = document.getElementById("gymSendBtn")
 const gymChatInput = document.getElementById("gymChatInput")
 
+const URL = `http://127.0.0.1:5000/chatbot/chat`;
+
+// 127.0.0.1 en macos 
+// localhost en windows
+
 gymChatToggle.addEventListener("click", () => {
     gymChatbox.classList.toggle("active")
 })
@@ -27,14 +32,14 @@ async function enviarMensaje() {
     gymChatInput.value = ''
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/chatbot/chat', {
+        const response = await fetch(URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ mensaje: mensaje })
         })
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`)
+            throw new Error(`Error: ${response.status}`)
         }
 
         const data = await response.json()
