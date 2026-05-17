@@ -5,8 +5,9 @@ const gymCloseChat = document.getElementById("gymCloseChat")
 const gymSendBtn = document.getElementById("gymSendBtn")
 const gymChatInput = document.getElementById("gymChatInput")
 
-const URL = `http://127.0.0.1:5000/chatbot/chat`;
-
+let MacOS = true
+const URL = MacOS ? 'http://127.0.0.1:5000/chatbot/chat' : 'http://localhost:5000/chatbot/chat'
+    
 // 127.0.0.1 en macos 
 // localhost en windows
 
