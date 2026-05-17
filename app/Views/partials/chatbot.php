@@ -23,8 +23,10 @@
     </div>
 
     <div class="gym-chat-footer">
-        <input type="text" placeholder="Escribe tu mensaje...">
-        <button>Enviar</button>
+        <input type="text" id="gymChatInput" placeholder="Escribe tu mensaje...">
+        <button id="gymSendBtn">Enviar</button>
     </div>
 
 </div>
+
+<script src="<?= base_url('assets/js/chatbot.js') ?>"></script>

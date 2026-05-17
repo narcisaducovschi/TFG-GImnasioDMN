@@ -33,6 +33,7 @@
 </head>
 <body>
     <?= $this->include('partials/header_buscar') ?>
+    <?= $this->include('partials/accesibilidad') ?>
 
     <section class="categorias-nav">
         <a href="<?= base_url('search?grupo=0') ?>">TODOS</a>

@@ -142,7 +142,7 @@
             <div class="faqs-container">
                 <div class="faqs-question">¿Cuanto tiempo duran las clases guiadas?</div>
                 <div class="faqs-content">
-                    <p>La duración de las clases guiadas varía según la disciplina: generalmente entre 45 y 60 minutos por sesión. La hora de inicio y de finalización de la clase está indicada a la hora de hacer la reserva, pero esta puede variar en función de factores externos. </p>
+                    <p>La duración de las clases guiadas varía según la disciplina: generalmente entre 45 y 60 minutos por sesión. La hora de inicio está indicada a la hora de hacer la reserva, la hora de finalización puede variar , por lo que no se indica. </p>
                 </div>
             </div>
             <div class="faqs-container">

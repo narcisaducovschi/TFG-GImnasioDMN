@@ -1,0 +1,117 @@
+{
+  "nombre_bot": "DMN_Support",
+  "idioma": "es",
+  "version": "1.1",
+  "intenciones": [
+    {
+      "tag": "saludo",
+      "patrones": [
+        "Hola",
+        "Buenos días",
+        "Buenas tardes",
+        "Buenas noches",
+        "Hola qué tal",
+        "Buenos dias",
+        "Hey",
+        "Buenas",
+        "Qué tal",
+        "Hola buenas",
+        "Saludos",
+        "Hola cómo estás",
+        "Buen día"
+      ],
+      "respuestas": [
+        "¡Hola! ¿En qué puedo ayudarte?",
+        "¡Buenos días! ¿Qué necesitas hoy?",
+        "¡Hola! Estoy aquí para ayudarte."
+      ]
+    },
+    {
+      "tag": "horario",
+      "patrones": [
+        "¿Cuál es el horario?",
+        "¿A qué hora abren?",
+        "¿A qué hora cierran?",
+        "Horario de atención",
+        "horarios",
+        "horario",
+        "¿cuándo abre el gimnasio?",
+        "cuando abre",
+        "cuando cierran",
+        "a qué hora abre",
+        "a qué hora cierra",
+        "horario de apertura",
+        "horario de cierre",
+        "hasta qué hora abren",
+        "qué horario tenéis",
+        "días que abrís",
+        "días de apertura",
+        "abrís los fines de semana",
+        "abren los sábados",
+        "abren los domingos",
+        "qué días estáis abiertos"
+      ],
+      "respuestas": [
+        "Nuestro horario de atención es de lunes a viernes de 9:00 a 18:00.",
+        "Atendemos de lunes a viernes en horario laboral de 9:00 a 18:00."
+      ]
+    },
+    {
+      "tag": "precios",
+      "patrones": [
+        "¿Cuánto cuesta?",
+        "Precio del producto",
+        "¿Qué precio tiene?",
+        "Información sobre precios",
+        "precios",
+        "precio",
+        "cuánto cuesta la mensualidad",
+        "cuánto vale",
+        "cuánto es",
+        "tarifa",
+        "tarifas",
+        "mensualidad",
+        "cuánto cuesta apuntarse",
+        "precio de la cuota",
+        "qué planes hay",
+        "planes y precios",
+        "precio básico",
+        "precio premium",
+        "cuánto vale la suscripción",
+        "quiero ver los precios",
+        "información de precios"
+      ],
+      "respuestas": [
+        "La mensualidad Básica es de 20€/mes y la Premium 30€/mes. Los precios de los productos los puedes consultar en la tienda."
+      ]
+    },
+    {
+      "tag": "contacto",
+      "patrones": [
+        "Quiero hablar con un humano",
+        "Atención al cliente",
+        "Soporte técnico",
+        "Hablar con un agente",
+        "contacto",
+        "contactar",
+        "hablar con alguien",
+        "necesito ayuda de una persona",
+        "hablar con soporte",
+        "cómo contacto",
+        "cómo me pongo en contacto",
+        "teléfono de contacto",
+        "email de contacto",
+        "enviar un mensaje",
+        "abrir un ticket",
+        "reportar un problema",
+        "tengo un problema",
+        "necesito ayuda",
+        "ayuda",
+        "soporte"
+      ],
+      "respuestas": [
+        "Para contactar con soporte, inicia sesión con tu cuenta y en el menú lateral, situado a la izquierda, haz click en la opción de soporte."
+      ]
+    }
+  ]
+}

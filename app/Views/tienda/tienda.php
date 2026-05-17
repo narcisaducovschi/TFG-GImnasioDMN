@@ -137,6 +137,7 @@
 
     <?= $this->include('partials/header') ?>
     <?= $this->include('partials/chatbot') ?>
+    <?= $this->include('partials/accesibilidad') ?>
 
     <!-- =========================
              HERO SECTION
