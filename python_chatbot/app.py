@@ -25,7 +25,7 @@ with open(os.path.join(BASE_DIR, 'respuestas.json'), encoding='utf-8') as f:
     intentos = json.load(f)
 
 palabras = pickle.load(open(os.path.join(BASE_DIR, 'palabras_cb.pk1'), 'rb'))
-clases   = pickle.load(open(os.path.join(BASE_DIR, 'clases_cb.pk1'),   'rb'))
+clases = pickle.load(open(os.path.join(BASE_DIR, 'clases_cb.pk1'),   'rb'))
 
 model = Sequential([
     Input(shape=(len(palabras),)),
