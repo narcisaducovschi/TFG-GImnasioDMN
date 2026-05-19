@@ -35,30 +35,42 @@
                         <th>Asunto</th>
                         <th>Estado</th>
                         <th>Fecha de Creación</th>
+                        <th>Ver</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($tickets)): ?>
-                        <?php foreach ($tickets as $ticket): ?>
-                            <tr>
-                                <td>#<?= $ticket['id'] ?></td>
-                                <td><strong><?= esc($ticket['asunto']) ?></strong></td>
-                                <td>
-                                    <span class="badge badge-<?= strtolower($ticket['estado']) ?>">
-                                        <?= $ticket['estado'] ?>
-                                    </span>
-                                </td>
-                                <td><?= date('d M, Y H:i', strtotime($ticket['fecha_creacion'])) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4" style="text-align:center; color: var(--text-light); padding: 3rem;">
-                                No has creado ningún ticket todavía.
-                            </td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
+    <?php if (!empty($tickets)): ?>
+        <?php foreach ($tickets as $ticket): ?>
+            <tr>
+                <td>#<?= $ticket['id'] ?></td>
+                <td><strong><?= esc($ticket['asunto']) ?></strong></td>
+                <td>
+                    <span class="badge badge-<?= strtolower($ticket['estado']) ?>">
+                        <?= $ticket['estado'] ?>
+                    </span>
+                </td>
+                <td><?= date('d M, Y H:i', strtotime($ticket['fecha_creacion'])) ?></td>
+                <td>
+                    <button class="btn-secundario btn-ver" style="font-size:0.8rem; padding:0.5rem 1rem;"
+                        onclick="verTicket(
+                            '<?= $ticket['id'] ?>',
+                            '<?= esc($ticket['asunto'], 'js') ?>',
+                            '<?= esc(nl2br($ticket['descripcion']), 'js') ?>',
+                            '<?= $ticket['estado'] ?>'
+                        )">
+                       VER
+                    </button>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="5" style="text-align:center; color: var(--text-light); padding: 3rem;">
+                No has creado ningún ticket todavía.
+            </td>
+        </tr>
+    <?php endif; ?>
+</tbody>
             </table>
         </div>
     </main>
@@ -87,6 +99,58 @@
         </div>
     </div>
 
+    <!-- Modal detalle ticket -->
+    <div id="detalleModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content-gym">
+            <div class="modal-header-gym" id="detalleModalHeader">
+                <h2>TICKET <span id="detalleId"></span></h2>
+            </div>
+            <div class="modal-body-gym">
+                <p style="font-weight:bold; font-size:1.1rem; margin-bottom:0.5rem;" id="detalleAsunto"></p>
+                <div style="background:var(--bg-light); border-radius:10px; padding:1rem; margin-bottom:1rem; line-height:1.7;" id="detalleDescripcion"></div>
+                <div style="text-align:right;">
+                    <span class="badge" id="detalleEstado"></span>
+                </div>
+                <div style="margin-top:1.5rem; text-align:right;">
+                    <button class="btn-secundario" onclick="cerrarDetalleModal()">CERRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function verTicket(id, asunto, descripcion, estado) {
+            document.getElementById('detalleId').textContent = '#' + id;
+            document.getElementById('detalleAsunto').textContent = asunto;
+            document.getElementById('detalleDescripcion').innerHTML = descripcion;
+
+            var badge = document.getElementById('detalleEstado');
+            badge.textContent = estado;
+            badge.className = 'badge badge-' + estado.toLowerCase();
+
+            // Cambia el color del header según estado
+            var header = document.getElementById('detalleModalHeader');
+            if (estado === 'Resuelto') {
+                header.style.backgroundColor = 'var(--success-color)';
+                header.style.color = 'white';
+            } else if (estado === 'Asignado') {
+                header.style.backgroundColor = 'var(--warning-color)';
+            } else {
+                header.style.backgroundColor = '';
+            }
+
+            document.getElementById('detalleModal').style.display = 'flex';
+        }
+
+        function cerrarDetalleModal() {
+            document.getElementById('detalleModal').style.display = 'none';
+        }
+
+        window.addEventListener('click', function(e) {
+            if (e.target === document.getElementById('detalleModal')) cerrarDetalleModal();
+            if (e.target === document.getElementById('ticketModal')) closeTicketModal();
+        });
+    </script>
     <script>
         function openTicketModal() {
             document.getElementById('ticketModal').style.display = 'flex';
